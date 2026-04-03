@@ -1068,6 +1068,165 @@ const BODY = `<!-- ════════════════════�
 
     </div>
   </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════
+     AI CHAT WIDGET
+═══════════════════════════════════ -->
+<style>
+/* ── Chat bubble ── */
+#chat-bubble {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #F97316, #EA6C0A);
+  box-shadow: 0 4px 20px rgba(249,115,22,.45);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none;
+  transition: transform .2s, box-shadow .2s;
+  animation: bubblePop .4s cubic-bezier(.175,.885,.32,1.275);
+}
+#chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(249,115,22,.55); }
+@keyframes bubblePop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+#chat-bubble .bubble-ico { font-size: 22px; }
+#chat-badge {
+  position: absolute; top: -3px; right: -3px;
+  width: 18px; height: 18px; background: #EF4444; border-radius: 50%;
+  border: 2px solid var(--bg); display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: white;
+}
+
+/* ── Chat panel ── */
+#chat-panel {
+  position: fixed; bottom: 92px; right: 28px; z-index: 998;
+  width: 360px; height: 500px;
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 18px; box-shadow: 0 16px 60px rgba(0,0,0,.14);
+  display: none; flex-direction: column;
+  overflow: hidden; animation: panelUp .25s ease;
+}
+#chat-panel.open { display: flex; }
+@keyframes panelUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+.chat-header {
+  background: linear-gradient(135deg,#111827,#1a2538);
+  padding: 16px 18px; display: flex; align-items: center; gap: 12px;
+  flex-shrink: 0;
+}
+.chat-av {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #F97316; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.chat-header-info { flex: 1; }
+.chat-header-name { font-size: 14px; font-weight: 600; color: white; }
+.chat-header-status { font-size: 11.5px; color: rgba(255,255,255,.5); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+.chat-header-status .s-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; }
+#chat-close { background: none; border: none; color: rgba(255,255,255,.5); cursor: pointer; font-size: 18px; padding: 0; line-height: 1; }
+#chat-close:hover { color: white; }
+
+.chat-msgs {
+  flex: 1; overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  scroll-behavior: smooth;
+}
+.chat-msgs::-webkit-scrollbar { width: 4px; }
+.chat-msgs::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+.msg { display: flex; gap: 8px; align-items: flex-end; }
+.msg.user { flex-direction: row-reverse; }
+
+.msg-av {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--s3); display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-bottom: 2px;
+}
+.msg.user .msg-av { background: #F97316; }
+
+.msg-bubble {
+  max-width: 240px; padding: 10px 14px; border-radius: 16px;
+  font-size: 13.5px; line-height: 1.55; word-wrap: break-word;
+}
+.msg.bot .msg-bubble { background: var(--s2); color: var(--t1); border-radius: 4px 16px 16px 16px; border: 1px solid var(--border); }
+.msg.user .msg-bubble { background: #F97316; color: white; border-radius: 16px 4px 16px 16px; }
+
+.typing-dots { display: flex; gap: 4px; padding: 4px 0; }
+.typing-dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--t3); animation: dot 1.2s infinite; }
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes dot { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+.chat-suggestions {
+  padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 6px; flex-shrink: 0;
+}
+.chat-sug {
+  background: var(--s2); border: 1px solid var(--border);
+  border-radius: 100px; padding: 5px 12px; font-size: 12px;
+  color: var(--t2); cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.chat-sug:hover { border-color: #F97316; color: #F97316; background: rgba(249,115,22,.06); }
+
+.chat-input-row {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+  background: var(--s1);
+}
+#chat-input {
+  flex: 1; border: 1px solid var(--border); border-radius: 22px;
+  padding: 9px 14px; font-family: 'DM Sans'; font-size: 13.5px; color: var(--t1);
+  background: var(--s2); outline: none; resize: none; transition: border-color .15s;
+}
+#chat-input:focus { border-color: #F97316; background: var(--s1); }
+#chat-send {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #F97316; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .15s;
+}
+#chat-send:hover { background: #EA6C0A; transform: scale(1.05); }
+#chat-send svg { display: block; }
+</style>
+
+<!-- Bubble button -->
+<button id="chat-bubble" onclick="toggleChat()">
+  <span class="bubble-ico">✦</span>
+  <div id="chat-badge">1</div>
+</button>
+
+<!-- Chat panel -->
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-av">✦</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Assistant Esmy</div>
+      <div class="chat-header-status"><span class="s-dot"></span> En ligne — Propulsé par l'IA</div>
+    </div>
+    <button id="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-msgs" id="chat-msgs">
+    <div class="msg bot">
+      <div class="msg-av">✦</div>
+      <div class="msg-bubble">Bonjour ! Je suis votre assistant Esmy. Comment puis-je vous aider à utiliser le dashboard aujourd'hui ? 😊</div>
+    </div>
+  </div>
+
+  <div class="chat-suggestions" id="chat-sugs">
+    <div class="chat-sug" onclick="sendSug(this)">Comment configurer la roue ?</div>
+    <div class="chat-sug" onclick="sendSug(this)">Répondre à un avis</div>
+    <div class="chat-sug" onclick="sendSug(this)">Générer mon QR code</div>
+    <div class="chat-sug" onclick="sendSug(this)">Connecter Google</div>
+  </div>
+
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')sendChat()">
+    <button id="chat-send" onclick="sendChat()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M2 8h12M8 2l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
 </div>`
 
 const SCRIPTS = `// ─── LOGIN ───
@@ -1404,6 +1563,105 @@ function notif(msg) {
 // ─── INIT ───
 function initDashboard() {
   setTimeout(() => { initWheelConfig(); drawQRDash(); }, 100);
+}
+
+// ─── CHAT LOGIC ───
+let chatOpen = false;
+let chatHistory = [];
+
+const SYSTEM_PROMPT = \`Tu es l'assistant Esmy, intégré dans le tableau de bord de la plateforme Esmy. Esmy aide les commerçants locaux à collecter des avis Google via une roue de la fortune (gamification) et à répondre automatiquement aux avis grâce à l'IA.
+
+Le dashboard contient ces sections :
+- Vue d'ensemble : statistiques globales, avis récents, résumé de la semaine
+- Avis clients : liste de tous les avis Google, filtres par étoiles, réponses IA suggérées, bouton Publier
+- Statistiques : graphiques d'évolution, performance par période
+- Roue de fortune : configurer les lots, probabilités, aperçu de la roue
+- Réponses IA : configurer le ton des réponses, activer/désactiver l'auto-réponse
+- QR Code & collecte : générer et télécharger le QR code à afficher en caisse
+
+Réponds de façon concise, pratique et amicale. Maximum 3 phrases par réponse. Aide le commerçant à trouver la bonne section ou à accomplir sa tâche. Si la question concerne une fonctionnalité à venir, dis-le simplement sans inventer. Tu parles toujours en français.\`;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chat-panel').classList.toggle('open', chatOpen);
+  document.getElementById('chat-badge').style.display = chatOpen ? 'none' : 'flex';
+  if (chatOpen) document.getElementById('chat-input').focus();
+}
+
+function sendSug(el) {
+  const text = el.textContent;
+  document.getElementById('chat-sugs').style.display = 'none';
+  addMsg('user', text);
+  callAI(text);
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  document.getElementById('chat-sugs').style.display = 'none';
+  addMsg('user', text);
+  callAI(text);
+}
+
+function addMsg(role, text) {
+  const msgs = document.getElementById('chat-msgs');
+  const isBot = role === 'bot';
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.innerHTML = \\\`<div class="msg-av">\\\${isBot ? '✦' : 'M'}</div><div class="msg-bubble">\\\${text}</div>\\\`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  chatHistory.push({ role: role === 'user' ? 'user' : 'assistant', content: text });
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chat-msgs');
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = 'typing-indicator';
+  div.innerHTML = '<div class="msg-av">✦</div><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+async function callAI(userMsg) {
+  showTyping();
+  try {
+    const messages = chatHistory.slice(-8).map(m => ({ role: m.role, content: m.content }));
+    // Make sure last message is the user message
+    if (messages[messages.length - 1]?.content !== userMsg) {
+      messages.push({ role: 'user', content: userMsg });
+    }
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: SYSTEM_PROMPT,
+        messages: messages
+      })
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    if (data.content && data.content[0]) {
+      addMsg('bot', data.content[0].text);
+    } else {
+      addMsg('bot', 'Je n\\'ai pas pu répondre. Réessayez dans un instant.');
+    }
+  } catch (err) {
+    removeTyping();
+    addMsg('bot', 'Une erreur s\\'est produite. Vérifiez votre connexion et réessayez.');
+  }
 }`
 
 export default function Page() {
