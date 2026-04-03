@@ -130,7 +130,6 @@ nav {
 .hero-h1 .accent { color: var(--orange); }
 .hero-h1 .near { 
   display: inline-block;
-  background: rgba(249,115,22,.15); border-radius: 8px; padding: 0 8px;
   color: var(--orange); font-style: italic;
 }
 .hero-sub {
@@ -486,7 +485,12 @@ const BODY = `<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">
-      <div class="logo-icon">⭐</div>
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5" fill="none"/>
+          <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
+        </svg>
+      </div>
       esmy
     </a>
     <div class="nav-links">
@@ -516,7 +520,7 @@ const BODY = `<!-- NAV -->
           <span class="near">"près de moi"</span>
         </h1>
         <p class="hero-sub">
-          Esmy collecte automatiquement vos avis Google grâce à la gamification, répond à chaque avis avec l'IA, et vous fait remonter dans le pack local Google — en moins d'une semaine.
+          Esmy augmente automatiquement vos avis Google grâce à la gamification, répond à chaque avis avec l'IA, et vous fait remonter dans le référencement Google — augmentant ainsi votre chiffre d'affaires, en moins d'une semaine.
         </p>
         <div class="hero-actions">
           <a href="#tarifs" class="btn-cta">
@@ -623,7 +627,7 @@ const BODY = `<!-- NAV -->
         <div class="stat-label">des avis reçoivent une réponse IA</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">3 min</div>
+        <div class="stat-num">10 min</div>
         <div class="stat-label">pour configurer et déployer votre QR code</div>
       </div>
     </div>
@@ -635,9 +639,9 @@ const BODY = `<!-- NAV -->
   <div class="container">
     <div class="near-grid">
       <div>
-        <div class="near-label">Visibilité locale · Google Near Me</div>
+        <div class="near-label">Visibilité locale · Google Près De Moi</div>
         <h2 class="near-title">
-          "Restaurant near me"<br>
+          "Restaurant près de moi"<br>
           — votre client cherche.<br>
           Êtes-vous visible ?
         </h2>
@@ -1064,7 +1068,12 @@ const BODY = `<!-- NAV -->
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="logo">
-          <div class="logo-icon">⭐</div>
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5" fill="none"/>
+              <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
+            </svg>
+          </div>
           esmy
         </a>
       </div>
