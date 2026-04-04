@@ -500,7 +500,7 @@ const BODY = `<!-- NAV -->
       <a href="/about">À propos</a>
     </div>
     <div class="nav-cta">
-      <a href="/dashboard" class="login">Connexion</a>
+      <a href="/login" class="login">Connexion</a>
       <a href="#tarifs" class="btn-cta" style="padding:10px 20px;font-size:13.5px;">Démarrer gratuitement</a>
     </div>
   </div>
