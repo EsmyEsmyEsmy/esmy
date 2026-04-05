@@ -46,7 +46,7 @@ const BODY = `<nav>
     </div>
 
     <h2>1. Qui sommes-nous</h2>
-    <p>Esmy (esmy.ai) est édité par une SASU de droit français, dont le siège social est en France. Le responsable de traitement est le fondateur d'Esmy, joignable à : <strong>contact@esmy.ai</strong></p>
+    <p>Esmy (esmy.ai) est un projet en cours de constitution, dont le responsable est domicilié en France. Le responsable de traitement est le fondateur d'Esmy, joignable à : <strong>contact@esmy.ai</strong></p>
 
     <h2>2. Données collectées</h2>
 
