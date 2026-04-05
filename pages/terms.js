@@ -41,7 +41,7 @@ const BODY = `<nav>
   <div class="container">
 
     <h2>1. Objet</h2>
-    <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme Esmy (esmy.ai), éditée par Esmy (SASU de droit français). En accédant à la plateforme et en créant un compte, vous acceptez sans réserve les présentes CGU.</p>
+    <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme Esmy (esmy.ai), éditée par Esmy, projet en cours de constitution, dont le responsable est domicilié en France. En accédant à la plateforme et en créant un compte, vous acceptez sans réserve les présentes CGU.</p>
 
     <h2>2. Description du service</h2>
     <p>Esmy est une plateforme SaaS destinée aux commerçants locaux. Elle permet :</p>
