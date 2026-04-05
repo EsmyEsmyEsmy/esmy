@@ -43,8 +43,8 @@ const BODY = `<nav>
 
     <h2>1. Éditeur du site</h2>
     <div class="info-block">
-      <div class="info-row"><span class="info-label">Raison sociale</span><span class="info-val">Esmy (SASU)</span></div>
-      <div class="info-row"><span class="info-label">Forme juridique</span><span class="info-val">Société par Actions Simplifiée Unipersonnelle</span></div>
+      <div class="info-row"><span class="info-label">Nom commercial</span><span class="info-val">Esmy</span></div>
+      <div class="info-row"><span class="info-label">Statut juridique</span><span class="info-val">Entreprise en cours de constitution</span></div>
       <div class="info-row"><span class="info-label">Pays</span><span class="info-val">France</span></div>
       <div class="info-row"><span class="info-label">Email de contact</span><span class="info-val">contact@esmy.ai</span></div>
       <div class="info-row"><span class="info-label">Site web</span><span class="info-val">https://esmy.ai</span></div>
