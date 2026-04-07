@@ -93,6 +93,24 @@ export default function WheelPage({ config }) {
     @keyframes cffall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
     .esmy-badge{text-align:center;padding:16px;font-size:12px;color:#9ca3af;border-top:1px solid #f3f4f6;margin-top:auto}
     .esmy-badge a{color:#F97316;text-decoration:none;font-weight:600}
+    .form-section{background:#f9fafb;border:1px solid #f3f4f6;border-radius:14px;padding:18px;margin-bottom:16px}
+    .form-title{font-size:14px;font-weight:700;color:#111827;margin-bottom:4px}
+    .form-sub{font-size:12px;color:#9ca3af;margin-bottom:14px;line-height:1.5}
+    .form-field{margin-bottom:10px}
+    .form-label{font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;display:block}
+    .form-input{width:100%;padding:11px 13px;border:1px solid #e5e7eb;border-radius:9px;font-family:'Nunito';font-size:14px;color:#111827;outline:none;background:#fff;transition:border-color .15s}
+    .form-input:focus{border-color:#F97316}
+    .form-input::placeholder{color:#d1d5db}
+    .form-check{display:flex;gap:10px;align-items:flex-start;margin-top:12px;margin-bottom:14px}
+    .form-check input{margin-top:3px;accent-color:#F97316;width:16px;height:16px;flex-shrink:0;cursor:pointer}
+    .form-check label{font-size:12px;color:#6b7280;line-height:1.55;cursor:pointer}
+    .form-check a{color:#F97316;text-decoration:none}
+    .btn-claim{width:100%;background:#F97316;color:#fff;border:none;border-radius:12px;padding:15px;font-family:'Nunito';font-size:14px;font-weight:700;cursor:pointer;transition:background .2s;margin-bottom:8px}
+    .btn-claim:hover{background:#EA6C0A}
+    .btn-skip{width:100%;background:transparent;color:#9ca3af;border:none;font-family:'Nunito';font-size:13px;cursor:pointer;padding:4px;text-decoration:underline;text-underline-offset:3px}
+    .confirmed-box{background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:14px;text-align:center;margin-bottom:14px}
+    .confirmed-box .cf-icon{font-size:24px;margin-bottom:6px}
+    .confirmed-box .cf-txt{font-size:13px;color:#15803d;font-weight:600}
   `
 
   const prizesList = JSON.stringify(prizes)
@@ -177,8 +195,9 @@ export default function WheelPage({ config }) {
         </div>
 
         {/* Screen 3 - Result */}
+        {/* Screen 3a — Result + Form */}
         <div className="screen" id="s3">
-          <div className="result-top">
+          <div className="result-top" style={{marginBottom:'16px'}}>
             <div className="result-check">🎉</div>
             <div className="result-eyebrow">Félicitations</div>
             <div className="result-title">Vous avez<br />gagné <em id="r-val"></em> !</div>
@@ -191,11 +210,55 @@ export default function WheelPage({ config }) {
               <div className="rc-desc" id="r-desc">-</div>
             </div>
           </div>
-          <div className="result-code">
-            <div><div className="rcode-label">Votre code</div><div className="rcode-val" id="r-code">-</div></div>
+
+          {/* Customer data form */}
+          <div className="form-section">
+            <div className="form-title">Recevoir votre lot</div>
+            <div className="form-sub">Laissez vos coordonnées pour que le commerce puisse vous contacter — tout est optionnel.</div>
+            <div className="form-field">
+              <label className="form-label">Prénom et nom</label>
+              <input className="form-input" type="text" placeholder="Marie Dupont" id="f-name" />
+            </div>
+            <div className="form-field">
+              <label className="form-label">Téléphone</label>
+              <input className="form-input" type="tel" placeholder="06 12 34 56 78" id="f-phone" />
+            </div>
+            <div className="form-field">
+              <label className="form-label">Date de naissance <span style={{color:'#d1d5db',fontWeight:400}}>(optionnel)</span></label>
+              <input className="form-input" type="date" id="f-dob" />
+            </div>
+            <div className="form-check">
+              <input type="checkbox" id="f-consent" />
+              <label htmlFor="f-consent">J'accepte d'être contacté(e) par <strong id="f-biz-name"></strong> pour recevoir mon lot et des offres personnalisées. <a href="/privacy" target="_blank">Politique de confidentialité</a></label>
+            </div>
+            <button className="btn-claim" onClick={() => { if (typeof claimPrize !== 'undefined') claimPrize(); }}>Recevoir mon lot →</button>
+            <button className="btn-skip" onClick={() => { if (typeof skipForm !== 'undefined') skipForm(); }}>Non merci, juste le code</button>
           </div>
-          <button className="btn-save" onClick={() => { if (typeof notifSave !== "undefined") notifSave(); }}>📸 Enregistrer mon lot</button>
-          <div className="result-note" id="r-note">Présentez ce code lors de votre prochaine visite.</div>
+        </div>
+
+        {/* Screen 3b — Confirmed */}
+        <div className="screen" id="s3b">
+          <div style={{textAlign:'center',marginBottom:'20px'}}>
+            <div style={{fontSize:'52px',marginBottom:'12px'}}>✅</div>
+            <div className="result-eyebrow">Votre lot est confirmé</div>
+            <div className="result-title" style={{fontSize:'26px'}}>À bientôt chez<br /><em id="r-biz-final"></em> !</div>
+          </div>
+          <div className="result-card">
+            <div className="rc-icon" id="r-ico-b">🎁</div>
+            <div>
+              <div className="rc-eyebrow">Votre lot</div>
+              <div className="rc-name" id="r-name-b">-</div>
+              <div className="rc-desc" id="r-desc-b">-</div>
+            </div>
+          </div>
+          <div className="result-code" style={{marginBottom:'14px'}}>
+            <div><div className="rcode-label">Votre code</div><div className="rcode-val" id="r-code-b">-</div></div>
+          </div>
+          <div className="confirmed-box">
+            <div className="cf-icon">📱</div>
+            <div className="cf-txt">Faites une capture d'écran<br />et présentez ce code en caisse</div>
+          </div>
+          <div className="result-note">Valable lors de votre prochaine visite.</div>
         </div>
 
         <div className="esmy-badge">Propulsé par <a href="https://esmy.ai" target="_blank">Esmy</a></div>
