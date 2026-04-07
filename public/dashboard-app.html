@@ -1453,13 +1453,21 @@ function updatePreviewLink() {
   }
 }
 
+// Get auth token from URL params (passed by dashboard.js)
+function getAuthParams() {
+  const p = new URLSearchParams(window.location.search);
+  return { token: p.get('token'), uid: p.get('uid') };
+}
+
 async function saveWheelConfig() {
   const slug = document.getElementById('wheel-slug').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'');
   const googleUrl = document.getElementById('wheel-google-url').value.trim();
 
   if (!slug) { notif('⚠ Entrez un identifiant pour votre roue'); return; }
 
-  // Build prizes from current config
+  const { token, uid } = getAuthParams();
+  if (!token || !uid) { notif('⚠ Session introuvable — rechargez la page'); return; }
+
   const currentPrizes = prizes.map(p => ({
     ico: p.ico,
     name: p.name,
@@ -1469,39 +1477,42 @@ async function saveWheelConfig() {
   }));
 
   try {
-    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-    const sb = createClient(
-      'https://dlytajnqtbtnliwnkjas.supabase.co',
-      document.querySelector('meta[name=sb-key]')?.content || ''
-    );
+    const SUPABASE_URL = 'https://dlytajnqtbtnliwnkjas.supabase.co';
+    const ANON_KEY = document.querySelector('meta[name=sb-key]').content;
 
-    const { data: { user } } = await sb.auth.getUser();
-    if (!user) { notif('⚠ Session expirée, reconnectez-vous'); return; }
+    const res = await fetch(SUPABASE_URL + '/rest/v1/wheel_configs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': ANON_KEY,
+        'Authorization': 'Bearer ' + token,
+        'Prefer': 'resolution=merge-duplicates'
+      },
+      body: JSON.stringify({
+        slug,
+        user_id: uid,
+        business_name: document.getElementById('sb-biz-name').textContent,
+        business_emoji: document.getElementById('sb-biz-ico').textContent,
+        google_maps_url: googleUrl,
+        prizes: currentPrizes,
+        active: true
+      })
+    });
 
-    const { error } = await sb.from('wheel_configs').upsert({
-      slug,
-      user_id: user.id,
-      business_name: document.getElementById('sb-biz-name').textContent,
-      business_emoji: document.getElementById('sb-biz-ico').textContent,
-      google_maps_url: googleUrl,
-      prizes: currentPrizes,
-      active: true
-    }, { onConflict: 'slug' });
-
-    if (error) {
-      if (error.code === '23505') { notif('⚠ Ce slug est déjà pris, choisissez-en un autre'); }
-      else { notif('⚠ Erreur: ' + error.message); }
+    if (!res.ok) {
+      const err = await res.json();
+      if (err.code === '23505') { notif('⚠ Ce slug est déjà pris, choisissez-en un autre'); }
+      else { notif('⚠ Erreur: ' + (err.message || res.status)); }
       return;
     }
 
     document.getElementById('save-slug').textContent = slug;
     document.getElementById('save-status').style.display = 'block';
-    document.getElementById('wheel-slug').value = slug;
     updatePreviewLink();
     notif('✅ Roue publiée sur esmy.ai/r/' + slug);
 
   } catch(err) {
-    notif('⚠ Impossible de sauvegarder. Vérifiez votre connexion.');
+    notif('⚠ Erreur réseau. Vérifiez votre connexion.');
     console.error(err);
   }
 }
