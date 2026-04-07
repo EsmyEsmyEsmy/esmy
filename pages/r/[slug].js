@@ -334,18 +334,48 @@ function spin() {
     else{spinning=false;setTimeout(()=>showResult(prize),300);}
   })(performance.now());
 }
+let currentCode = '';
+let currentPrizeObj = null;
+
 function showResult(prize) {
   setStep(3);
-  document.getElementById('r-val').textContent=prize.name;
-  document.getElementById('r-ico').textContent=prize.ico;
-  document.getElementById('r-name').textContent=prize.name;
-  document.getElementById('r-desc').textContent=prize.desc;
-  const code='E-'+Math.random().toString(36).substring(2,7).toUpperCase();
-  document.getElementById('r-code').textContent=code;
-  document.getElementById('r-note').textContent='Présentez ce code lors de votre prochaine visite chez '+bizName+'.';
-  show('s3'); doConfetti();
+  currentPrizeObj = prize;
+  currentCode = 'E-'+Math.random().toString(36).substring(2,7).toUpperCase();
+  // Fill result card in s3
+  const rVal = document.getElementById('r-val');
+  const rIco = document.getElementById('r-ico');
+  const rName = document.getElementById('r-name');
+  const rDesc = document.getElementById('r-desc');
+  const fBiz = document.getElementById('f-biz-name');
+  if(rVal) rVal.textContent = prize.name;
+  if(rIco) rIco.textContent = prize.ico;
+  if(rName) rName.textContent = prize.name;
+  if(rDesc) rDesc.textContent = prize.desc || 'Valable chez nous';
+  if(fBiz) fBiz.textContent = bizName;
+  show('s3');
+  doConfetti();
 }
-function notifSave() { alert('📸 Faites une capture d\\'écran et présentez ce code lors de votre prochaine visite !'); }
+
+function showConfirmed() {
+  const p = currentPrizeObj;
+  if(!p) return;
+  const icoB = document.getElementById('r-ico-b');
+  const nameB = document.getElementById('r-name-b');
+  const descB = document.getElementById('r-desc-b');
+  const codeB = document.getElementById('r-code-b');
+  const bizFinal = document.getElementById('r-biz-final');
+  if(icoB) icoB.textContent = p.ico;
+  if(nameB) nameB.textContent = p.name;
+  if(descB) descB.textContent = p.desc || 'Valable chez nous';
+  if(codeB) codeB.textContent = currentCode;
+  if(bizFinal) bizFinal.textContent = bizName;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+  const s3b = document.getElementById('s3b');
+  if(s3b) { s3b.classList.add('on'); }
+}
+
+function claimPrize() { showConfirmed(); }
+function skipForm() { showConfirmed(); }
 function doConfetti() {
   const cols=['#F97316','#111827','#F59E0B','#16A34A','#7C3AED','#EF4444'];
   for(let i=0;i<50;i++){
