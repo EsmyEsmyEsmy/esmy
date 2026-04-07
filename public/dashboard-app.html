@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="sb-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRseXRham5xdGJ0bmxpd25ramFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMjAwMzUsImV4cCI6MjA5MDc5NjAzNX0.iNojWNLtO8PQWjFfUE0C5wAj1QFejlzdK0KES2_XTfo">
+<meta name="sb-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRseXRham5xdGJ0bmxpd25ramFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzOTc2MjIsImV4cCI6MjA5MDk3MzYyMn0.Qdz9aMPOtRuI3kCWXb1SFOBqbv5BFnRkXRHMRqOmYFM">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Esmy — Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
@@ -1480,30 +1480,50 @@ async function saveWheelConfig() {
     const SUPABASE_URL = 'https://dlytajnqtbtnliwnkjas.supabase.co';
     const ANON_KEY = document.querySelector('meta[name=sb-key]').content;
 
-    const res = await fetch(SUPABASE_URL + '/rest/v1/wheel_configs', {
-      method: 'POST',
+    const payload = {
+      slug,
+      user_id: uid,
+      business_name: document.getElementById('sb-biz-name').textContent,
+      business_emoji: document.getElementById('sb-biz-ico').textContent,
+      google_maps_url: googleUrl,
+      prizes: currentPrizes,
+      active: true,
+      updated_at: new Date().toISOString()
+    };
+
+    // Try PATCH first (update existing), then POST (insert new)
+    const patchRes = await fetch(SUPABASE_URL + '/rest/v1/wheel_configs?slug=eq.' + slug + '&user_id=eq.' + uid, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'apikey': ANON_KEY,
         'Authorization': 'Bearer ' + token,
-        'Prefer': 'resolution=merge-duplicates'
+        'Prefer': 'return=representation'
       },
-      body: JSON.stringify({
-        slug,
-        user_id: uid,
-        business_name: document.getElementById('sb-biz-name').textContent,
-        business_emoji: document.getElementById('sb-biz-ico').textContent,
-        google_maps_url: googleUrl,
-        prizes: currentPrizes,
-        active: true
-      })
+      body: JSON.stringify(payload)
     });
 
-    if (!res.ok) {
-      const err = await res.json();
-      if (err.code === '23505') { notif('⚠ Ce slug est déjà pris, choisissez-en un autre'); }
-      else { notif('⚠ Erreur: ' + (err.message || res.status)); }
-      return;
+    const patchData = await patchRes.json();
+    let res;
+
+    if (!patchRes.ok || !patchData.length) {
+      // Record doesn't exist yet — insert
+      res = await fetch(SUPABASE_URL + '/rest/v1/wheel_configs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': ANON_KEY,
+          'Authorization': 'Bearer ' + token,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        if (err.code === '23505') { notif('⚠ Ce slug est déjà pris, choisissez-en un autre'); }
+        else { notif('⚠ Erreur: ' + (err.message || res.status)); }
+        return;
+      }
     }
 
     document.getElementById('save-slug').textContent = slug;
