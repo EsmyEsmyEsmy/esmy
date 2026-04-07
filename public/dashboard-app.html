@@ -1453,10 +1453,15 @@ function updatePreviewLink() {
   }
 }
 
-// Get auth token from URL params (passed by dashboard.js)
+// Get auth params from URL (passed by dashboard.js)
 function getAuthParams() {
   const p = new URLSearchParams(window.location.search);
-  return { token: p.get('token'), uid: p.get('uid') };
+  return {
+    token: p.get('token'),
+    uid: p.get('uid'),
+    key: p.get('key'),
+    url: p.get('url')
+  };
 }
 
 async function saveWheelConfig() {
@@ -1477,8 +1482,8 @@ async function saveWheelConfig() {
   }));
 
   try {
-    const SUPABASE_URL = 'https://dlytajnqtbtnliwnkjas.supabase.co';
-    const ANON_KEY = document.querySelector('meta[name=sb-key]').content;
+    const { token: _t, uid: _u, key: ANON_KEY, url: SUPABASE_URL } = getAuthParams();
+    if (!ANON_KEY || !SUPABASE_URL) { notif('⚠ Configuration manquante — rechargez'); return; }
 
     const payload = {
       slug,
