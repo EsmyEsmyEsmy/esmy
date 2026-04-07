@@ -153,11 +153,11 @@ export default function WheelPage({ config }) {
             </div>
           </div>
 
-          <button className="btn-google" onClick="openGoogle()">
+          <button className="btn-google" onClick={() => { if (typeof openGoogle !== "undefined") openGoogle(); }}>
             <div className="g-badge">G</div>
             Laisser mon avis Google
           </button>
-          <div className="already-done" onClick="goToWheel()">J'ai déjà laissé mon avis →</div>
+          <div className="already-done" onClick={() => { if (typeof goToWheel !== "undefined") goToWheel(); }}>J'ai déjà laissé mon avis →</div>
         </div>
 
         {/* Screen 2 - Wheel */}
@@ -172,7 +172,7 @@ export default function WheelPage({ config }) {
             <canvas id="wheel" width="290" height="290"></canvas>
           </div>
           <div className="btn-spin-wrap">
-            <button className="btn-spin" id="btn-spin" onClick="spin()">Tourner la roue</button>
+            <button className="btn-spin" id="btn-spin" onClick={() => { if (typeof spin !== "undefined") spin(); }}>Tourner la roue</button>
           </div>
         </div>
 
@@ -194,7 +194,7 @@ export default function WheelPage({ config }) {
           <div className="result-code">
             <div><div className="rcode-label">Votre code</div><div className="rcode-val" id="r-code">-</div></div>
           </div>
-          <button className="btn-save" onClick="notifSave()">📸 Enregistrer mon lot</button>
+          <button className="btn-save" onClick={() => { if (typeof notifSave !== "undefined") notifSave(); }}>📸 Enregistrer mon lot</button>
           <div className="result-note" id="r-note">Présentez ce code lors de votre prochaine visite.</div>
         </div>
 
