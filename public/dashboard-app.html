@@ -469,19 +469,27 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
     <!-- Establishment selector -->
     <div class="sb-biz" onclick="toggleBizDD()">
       <div class="sb-biz-ico" id="sb-biz-ico">🍕</div>
-      <div class="sb-biz-name" id="sb-biz-name">La Pizza du Soleil</div>
+      <div style="flex:1;min-width:0">
+        <div class="sb-biz-name" id="sb-biz-name" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">La Pizza du Soleil</div>
+        <div id="sb-biz-addr" style="font-size:10.5px;color:var(--t3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nice Centre · 06000</div>
+      </div>
       <div class="sb-biz-arrow">▾</div>
       <div class="biz-dropdown" id="biz-dropdown">
-        <div class="biz-opt selected" onclick="selectBiz(event,'🍕','La Pizza du Soleil',0)">
-          <div class="biz-opt-ico">🍕</div> La Pizza du Soleil
+        <div class="biz-opt selected" onclick="selectBiz(event,'🍕','La Pizza du Soleil','Nice Centre · 06000',0)">
+          <div class="biz-opt-ico">🍕</div>
+          <div style="flex:1"><div>La Pizza du Soleil</div><div style="font-size:10.5px;color:var(--t3)">Nice Centre · 06000</div></div>
           <span class="biz-opt-check">✓</span>
         </div>
-        <div class="biz-opt" onclick="selectBiz(event,'☕','Café du Marais',1)">
-          <div class="biz-opt-ico" style="background:#6b7280">☕</div> Café du Marais
+        <div class="biz-opt" onclick="selectBiz(event,'☕','Café du Marais','Paris 11e · 75011',1)">
+          <div class="biz-opt-ico" style="background:#6b7280">☕</div>
+          <div style="flex:1"><div>Café du Marais</div><div style="font-size:10.5px;color:var(--t3)">Paris 11e · 75011</div></div>
         </div>
-        <div class="biz-opt" onclick="selectBiz(event,'💈','Barber & Co.',2)">
-          <div class="biz-opt-ico" style="background:#374151">💈</div> Barber & Co.
+        <div class="biz-opt" onclick="selectBiz(event,'💈','Barber & Co.','Lyon 2e · 69002',2)">
+          <div class="biz-opt-ico" style="background:#374151">💈</div>
+          <div style="flex:1"><div>Barber & Co.</div><div style="font-size:10.5px;color:var(--t3)">Lyon 2e · 69002</div></div>
         </div>
+        <div style="height:1px;background:var(--border);margin:4px 0"></div>
+        <div style="padding:8px 12px;font-size:12px;color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:6px" onclick="notif('Fonctionnalité bientôt disponible !')">+ Ajouter un établissement</div>
       </div>
     </div>
 
@@ -495,15 +503,24 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
       <div class="sb-item" onclick="nav(this,'wheel')"><span class="ico">🎡</span>Roue de fortune</div>
       <div class="sb-item" onclick="nav(this,'ai')"><span class="ico">🤖</span>Réponses IA</div>
       <div class="sb-item" onclick="nav(this,'collect')"><span class="ico">📲</span>QR Code & collecte</div>
+      <div class="sb-item" onclick="nav(this,'settings')"><span class="ico">⚙️</span>Mon compte</div>
     </nav>
 
-    <div class="sb-user">
-      <div class="sb-av">M</div>
-      <div>
-        <div class="sb-uname">Marco V.</div>
-        <div class="sb-uplan">Plan Pro</div>
+    <div class="sb-user" style="flex-direction:column;gap:8px;padding:12px 12px 14px;border-top:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:10px;width:100%">
+        <div class="sb-av" id="sb-av-initial" style="background:#F97316;cursor:pointer" onclick="toggleUserMenu()">?</div>
+        <div style="flex:1;min-width:0">
+          <div class="sb-uname" id="sb-uname" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Chargement…</div>
+          <div class="sb-uplan" id="sb-uplan">Plan Starter</div>
+        </div>
+        <button onclick="doLogout()" title="Se déconnecter" style="background:none;border:none;cursor:pointer;color:var(--t3);font-size:16px;padding:4px;line-height:1;flex-shrink:0" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--t3)'">→</button>
       </div>
-      <div class="sb-logout" onclick="doLogout()">←</div>
+      <!-- User mini menu -->
+      <div id="user-menu" style="display:none;width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden">
+        <div onclick="nav(null,'settings')" style="padding:9px 12px;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s" onmouseover="this.style.background='var(--s3)'" onmouseout="this.style.background=''">⚙️ <span>Paramètres du compte</span></div>
+        <div style="height:1px;background:var(--border)"></div>
+        <div onclick="doLogout()" style="padding:9px 12px;font-size:12.5px;cursor:pointer;color:var(--red);display:flex;align-items:center;gap:8px" onmouseover="this.style.background='var(--red-bg)'" onmouseout="this.style.background=''">← <span>Se déconnecter</span></div>
+      </div>
     </div>
   </aside>
 
@@ -965,22 +982,30 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
             </div>
 
             <div class="card">
-              <div class="card-header"><div class="card-title">Règles de participation</div></div>
+              <div class="card-header"><div class="card-title">Données clients collectées</div></div>
               <div class="card-body">
+                <div style="background:var(--green-bg);border:1px solid #86efac;border-radius:var(--r-sm);padding:10px 13px;font-size:12.5px;color:#15803d;margin-bottom:14px;display:flex;gap:8px;align-items:flex-start">
+                  <span>✅</span>
+                  <span>La récompense est identique quelle que soit la note laissée — conforme aux règles Google Business.</span>
+                </div>
                 <div class="config-row">
-                  <div><div class="config-lbl">Avis 5★ → 3 tickets loterie</div><div class="config-sub">Les meilleurs avis donnent plus de chances</div></div>
+                  <div><div class="config-lbl">Prénom et nom</div><div class="config-sub">Obligatoire — pour personnaliser les offres</div></div>
+                  <div class="toggle on" style="opacity:.5;pointer-events:none"></div>
+                </div>
+                <div class="config-row">
+                  <div><div class="config-lbl">Numéro de téléphone</div><div class="config-sub">Pour les campagnes SMS ciblées</div></div>
                   <div class="toggle on" onclick="this.classList.toggle('on')"></div>
                 </div>
                 <div class="config-row">
-                  <div><div class="config-lbl">Un seul tour par client</div><div class="config-sub">Basé sur l'adresse email ou le téléphone</div></div>
-                  <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                  <div><div class="config-lbl">Date de naissance</div><div class="config-sub">Optionnel — offres anniversaire personnalisées</div></div>
+                  <div class="toggle" onclick="this.classList.toggle('on')"></div>
                 </div>
                 <div class="config-row">
-                  <div><div class="config-lbl">Afficher les lots avant de jouer</div><div class="config-sub">Crée l'envie avant de laisser l'avis</div></div>
+                  <div><div class="config-lbl">Un seul tour par client</div><div class="config-sub">Basé sur le numéro de téléphone</div></div>
                   <div class="toggle on" onclick="this.classList.toggle('on')"></div>
                 </div>
                 <div style="margin-top:14px">
-                  <button class="btn btn-primary" style="width:100%" onclick="notif('✅ Configuration sauvegardée !')">Sauvegarder les paramètres</button>
+                  <button class="btn btn-primary" style="width:100%" onclick="notif('✅ Paramètres sauvegardés !')">Sauvegarder</button>
                 </div>
               </div>
             </div>
@@ -1135,6 +1160,77 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
         </div>
       </div>
 
+
+      <!-- ── SETTINGS ── -->
+      <div class="panel" id="panel-settings">
+        <div class="two-col">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Informations du compte</div></div>
+              <div class="card-body">
+                <div class="field-group">
+                  <div class="field-label">Nom complet</div>
+                  <input class="field-input" id="settings-name" placeholder="Votre nom">
+                </div>
+                <div class="field-group">
+                  <div class="field-label">Email</div>
+                  <input class="field-input" id="settings-email" placeholder="contact@moncommerce.fr" type="email">
+                </div>
+                <button class="btn btn-primary" style="width:100%" onclick="notif('✅ Informations mises à jour')">Enregistrer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Changer le mot de passe</div></div>
+              <div class="card-body">
+                <div class="field-group">
+                  <div class="field-label">Nouveau mot de passe</div>
+                  <input class="field-input" type="password" placeholder="••••••••" id="settings-pw">
+                </div>
+                <div class="field-group">
+                  <div class="field-label">Confirmer</div>
+                  <input class="field-input" type="password" placeholder="••••••••" id="settings-pw2">
+                </div>
+                <button class="btn btn-ghost" style="width:100%" onclick="notif('✅ Mot de passe mis à jour')">Changer</button>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Mon abonnement</div></div>
+              <div class="card-body">
+                <div style="background:var(--s2);border-radius:var(--r-sm);padding:16px 18px;margin-bottom:14px">
+                  <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:6px">Plan actuel</div>
+                  <div style="font-size:22px;font-weight:800;color:var(--black);margin-bottom:4px" id="settings-plan-name">Starter</div>
+                  <div style="font-size:13px;color:var(--t2)">29€ / mois · Sans engagement</div>
+                </div>
+                <button class="btn btn-primary" style="width:100%;margin-bottom:8px" onclick="notif('Redirection vers la page de paiement...')">⭐ Passer au plan Pro</button>
+                <button class="btn btn-ghost" style="width:100%" onclick="notif('Un email de confirmation vous sera envoyé')">Annuler mon abonnement</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Préférences</div></div>
+              <div class="card-body">
+                <div class="config-row">
+                  <div><div class="config-lbl">Notifications par email</div><div class="config-sub">Alertes avis négatifs, résumé hebdo</div></div>
+                  <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                </div>
+                <div class="config-row">
+                  <div><div class="config-lbl">Rapport hebdomadaire</div><div class="config-sub">Chaque lundi matin par email</div></div>
+                  <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                </div>
+                <div class="config-row">
+                  <div><div class="config-lbl">Langue</div><div class="config-sub">Français</div></div>
+                  <div style="font-size:12px;color:var(--t3)">🇫🇷</div>
+                </div>
+                <div style="margin-top:14px">
+                  <button class="btn btn-ghost" style="width:100%;color:var(--red);border-color:var(--red)" onclick="if(confirm('Supprimer définitivement votre compte ?')) notif('Contact : contact@esmy.ai')">Supprimer mon compte</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1160,7 +1256,7 @@ function togglePw() {
 }
 
 // ─── NAV ───
-const pages = { overview:'Vue d\'ensemble', reviews:'Avis clients', stats:'Statistiques', wheel:'Roue de fortune', ai:'Réponses IA', collect:'QR Code & collecte' };
+const pages = { overview:'Vue d\'ensemble', reviews:'Avis clients', stats:'Statistiques', wheel:'Roue de fortune', ai:'Réponses IA', collect:'QR Code & collecte', settings:'Mon compte' };
 function nav(el, page) {
   document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
@@ -1187,10 +1283,12 @@ function closeBizDD(e) {
   const dd = document.getElementById('biz-dropdown');
   if (!dd.contains(e.target)) dd.classList.remove('open');
 }
-function selectBiz(e, ico, name, idx) {
+function selectBiz(e, ico, name, addr, idx) {
   e.stopPropagation();
   document.getElementById('sb-biz-ico').textContent = ico;
   document.getElementById('sb-biz-name').textContent = name;
+  const addrEl = document.getElementById('sb-biz-addr');
+  if (addrEl) addrEl.textContent = addr || '';
   document.querySelectorAll('.biz-opt').forEach((o, i) => {
     o.classList.toggle('selected', i === idx);
     const chk = o.querySelector('.biz-opt-check');
@@ -1559,6 +1657,31 @@ function setTone(el) {
   notif('✏️ Ton : ' + el.textContent);
 }
 
+// ─── USER INFO ───
+function toggleUserMenu() {
+  const m = document.getElementById('user-menu');
+  m.style.display = m.style.display === 'none' ? 'block' : 'none';
+}
+
+async function loadUserInfo() {
+  const { token, uid, key: ANON_KEY, url: SUPABASE_URL } = getAuthParams();
+  if (!token || !ANON_KEY) return;
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/profiles?id=eq.' + uid, {
+      headers: { 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + token }
+    });
+    const data = await res.json();
+    if (data && data[0]) {
+      const u = data[0];
+      const name = u.full_name || u.email || 'Mon compte';
+      const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+      document.getElementById('sb-uname').textContent = name;
+      document.getElementById('sb-av-initial').textContent = initials;
+      document.getElementById('sb-uplan').textContent = u.plan === 'pro' ? '⭐ Plan Pro' : u.plan === 'agency' ? '🏢 Plan Agence' : '✦ Plan Starter';
+    }
+  } catch(e) { console.log('Could not load user info'); }
+}
+
 // ─── NOTIF ───
 function notif(msg) {
   const n = document.createElement('div'); n.className = 'notif'; n.textContent = msg;
@@ -1672,7 +1795,7 @@ async function saveWheelConfig() {
 
 // ─── INIT ───
 function initDashboard() {
-  setTimeout(() => { initWheelConfig(); drawQRDash(); loadWheelConfig(); }, 100);
+  setTimeout(() => { initWheelConfig(); drawQRDash(); loadWheelConfig(); loadUserInfo(); }, 100);
 }
 
 // ─── LOAD EXISTING WHEEL CONFIG ───
