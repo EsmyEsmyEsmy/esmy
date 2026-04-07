@@ -1065,39 +1065,70 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
 
       <!-- ── COLLECT ── -->
       <div class="panel" id="panel-collect">
-        <div class="two-col">
-          <div class="card">
-            <div class="card-header"><div class="card-title">QR Code</div></div>
-            <div class="card-body" style="display:flex;flex-direction:column;align-items:center;gap:16px">
-              <div style="background:white;padding:16px;border-radius:12px;border:1px solid var(--border)">
-                <canvas id="qr-dash" width="180" height="180"></canvas>
-              </div>
-              <div style="font-size:12.5px;color:var(--t2);text-align:center">esmy.ai/r/bella-paris11</div>
-              <div style="display:flex;gap:8px;width:100%">
-                <button class="btn btn-primary" style="flex:1" onclick="notif('⬇ QR code téléchargé !')">⬇ PDF</button>
-                <button class="btn btn-ghost" style="flex:1" onclick="notif('📋 Lien copié !')">📋 Copier</button>
-              </div>
+        <!-- No slug configured -->
+        <div id="qr-no-slug" style="display:none">
+          <div class="card" style="max-width:500px;margin:0 auto;text-align:center">
+            <div class="card-body" style="padding:40px 32px">
+              <div style="font-size:48px;margin-bottom:16px">🎡</div>
+              <div style="font-size:17px;font-weight:700;margin-bottom:8px">Configurez d'abord votre roue</div>
+              <div style="font-size:14px;color:var(--t2);margin-bottom:20px">Allez dans "Roue de fortune", définissez votre slug et sauvegardez — votre QR code apparaîtra ici.</div>
+              <button class="btn btn-primary" onclick="nav(document.querySelector('[onclick*=wheel]'),'wheel')">Configurer ma roue →</button>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header"><div class="card-title">Lien de collecte</div></div>
-            <div class="card-body">
-              <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;font-family:monospace;font-size:13px;color:var(--t2);margin-bottom:12px;word-break:break-all">
-                https://esmy.ai/r/bella-paris11
+        </div>
+
+        <!-- Slug configured -->
+        <div id="qr-has-slug">
+          <div class="two-col">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">QR Code</div>
+                <span class="tag tag-green" id="qr-status-tag"><span class="dot"></span> Actif</span>
               </div>
-              <div style="display:flex;gap:8px;margin-bottom:16px">
-                <button class="btn btn-ghost btn-sm" onclick="notif('📋 Lien copié !')">Copier le lien</button>
-                <button class="btn btn-ghost btn-sm" onclick="notif('📤 Lien partagé !')">Partager</button>
+              <div class="card-body" style="display:flex;flex-direction:column;align-items:center;gap:16px">
+                <!-- QR with logo -->
+                <div style="position:relative;background:white;padding:16px;border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm)">
+                  <canvas id="qr-dash" width="200" height="200"></canvas>
+                  <!-- Center logo overlay -->
+                  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:#F97316;border-radius:8px;display:flex;align-items:center;justify-content:center;border:3px solid white;font-size:16px">⭐</div>
+                </div>
+                <div id="qr-url-display" style="font-size:12.5px;color:var(--t2);text-align:center;font-family:monospace;background:var(--s2);padding:6px 12px;border-radius:6px;border:1px solid var(--border)"></div>
+                <div style="display:flex;gap:8px;width:100%">
+                  <button class="btn btn-primary" style="flex:1" onclick="downloadQR()">⬇ Télécharger</button>
+                  <button class="btn btn-ghost" style="flex:1" onclick="copyQRLink()">📋 Copier</button>
+                </div>
+                <button class="btn btn-ghost" style="width:100%" onclick="openWheelPage()">↗ Voir ma page</button>
               </div>
-              <div class="section-sep"></div>
-              <div class="section-title" style="font-size:13px">SMS post-visite</div>
-              <div class="config-row">
-                <div><div class="config-lbl">Séquence SMS active</div><div class="config-sub">Envoi 2h après la visite</div></div>
-                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div class="card">
+                <div class="card-header"><div class="card-title">Conseils d'affichage</div></div>
+                <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--s2);border-radius:var(--r-sm)">
+                    <div style="font-size:20px">🧾</div>
+                    <div><div style="font-size:13px;font-weight:600;margin-bottom:2px">Sur les tickets de caisse</div><div style="font-size:12px;color:var(--t2)">Imprimez le QR sur vos tickets — 1 scan = 1 avis potentiel</div></div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--s2);border-radius:var(--r-sm)">
+                    <div style="font-size:20px">🪧</div>
+                    <div><div style="font-size:13px;font-weight:600;margin-bottom:2px">Chevalet sur le comptoir</div><div style="font-size:12px;color:var(--t2)">Format A5 ou A6 — visible depuis la file d'attente</div></div>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--s2);border-radius:var(--r-sm)">
+                    <div style="font-size:20px">🍽️</div>
+                    <div><div style="font-size:13px;font-weight:600;margin-bottom:2px">Sur les tables</div><div style="font-size:12px;color:var(--t2)">Idéal restaurants — le client scanne en attendant</div></div>
+                  </div>
+                </div>
               </div>
-              <div style="background:var(--s2);border-radius:var(--r-sm);padding:12px;margin-top:10px;font-size:12.5px;color:var(--t2);line-height:1.6">
-                <strong style="color:var(--t1)">Aperçu SMS :</strong><br>
-                Merci pour votre visite chez La Pizza du Soleil ! 🍕 Laissez un avis et tentez de gagner un week-end spa → esmy.ai/r/bella
+
+              <div class="card">
+                <div class="card-header"><div class="card-title">Votre lien direct</div></div>
+                <div class="card-body">
+                  <div id="qr-link-box" style="background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;font-family:monospace;font-size:12.5px;color:var(--t2);margin-bottom:12px;word-break:break-all"></div>
+                  <div style="display:flex;gap:8px">
+                    <button class="btn btn-ghost btn-sm" style="flex:1" onclick="copyQRLink()">📋 Copier</button>
+                    <button class="btn btn-ghost btn-sm" style="flex:1" onclick="openWheelPage()">↗ Ouvrir</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1409,21 +1440,116 @@ function delPrize(i) {
   prizes.splice(i, 1); renderPrizeList(); drawWheelConfig(wAngle);
 }
 
-// ─── QR CANVAS ───
+// ─── QR CODE ───
+let currentSlug = '';
+
 function drawQRDash() {
-  const c = document.getElementById('qr-dash');
-  if (!c) return;
-  const ctx = c.getContext('2d'), size = 180, cell = 5, cols = 36;
-  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, size, size);
-  for (let r = 0; r < cols; r++) {
-    for (let c2 = 0; c2 < cols; c2++) {
-      const isCorner = (r < 7 && c2 < 7) || (r < 7 && c2 > 28) || (r > 28 && c2 < 7);
-      const on = isCorner || Math.random() > 0.5;
-      if (!on) continue;
-      ctx.fillStyle = '#0f0f0f';
-      ctx.fillRect(c2 * 5, r * 5, 4, 4);
-    }
+  // Get slug from wheel config section
+  const slugInput = document.getElementById('wheel-slug');
+  const slug = slugInput ? slugInput.value.trim() : '';
+
+  if (!slug) {
+    document.getElementById('qr-no-slug').style.display = 'block';
+    document.getElementById('qr-has-slug').style.display = 'none';
+    return;
   }
+
+  document.getElementById('qr-no-slug').style.display = 'none';
+  document.getElementById('qr-has-slug').style.display = 'block';
+
+  const url = 'https://esmy.ai/r/' + slug;
+  currentSlug = slug;
+
+  document.getElementById('qr-url-display').textContent = url;
+  document.getElementById('qr-link-box').textContent = url;
+
+  // Draw QR using qr-creator library via CDN
+  const canvas = document.getElementById('qr-dash');
+  if (!canvas) return;
+
+  // Load QRious library dynamically
+  if (typeof QRious === 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js';
+    script.onload = () => renderQR(canvas, url);
+    document.head.appendChild(script);
+  } else {
+    renderQR(canvas, url);
+  }
+}
+
+function renderQR(canvas, url) {
+  const qr = new QRious({
+    element: canvas,
+    value: url,
+    size: 200,
+    level: 'H',
+    background: '#ffffff',
+    foreground: '#0f0f0f',
+    backgroundAlpha: 1,
+    foregroundAlpha: 1,
+    padding: 10
+  });
+}
+
+function downloadQR() {
+  const canvas = document.getElementById('qr-dash');
+  if (!canvas) return;
+
+  // Create download canvas with branding
+  const dl = document.createElement('canvas');
+  dl.width = 400; dl.height = 480;
+  const ctx = dl.getContext('2d');
+
+  // White background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 400, 480);
+
+  // Draw QR centered
+  ctx.drawImage(canvas, 100, 40, 200, 200);
+
+  // Business name
+  const bizName = document.getElementById('sb-biz-name').textContent;
+  ctx.fillStyle = '#111827';
+  ctx.font = 'bold 20px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(bizName, 200, 275);
+
+  // Instructions
+  ctx.fillStyle = '#6b7280';
+  ctx.font = '14px sans-serif';
+  ctx.fillText('Scannez pour laisser un avis', 200, 300);
+  ctx.fillText('et gagner un cadeau !', 200, 320);
+
+  // URL
+  ctx.fillStyle = '#F97316';
+  ctx.font = 'bold 13px monospace';
+  ctx.fillText('esmy.ai/r/' + currentSlug, 200, 350);
+
+  // Esmy badge
+  ctx.fillStyle = '#f3f4f6';
+  ctx.beginPath();
+  ctx.roundRect(130, 370, 140, 36, 8);
+  ctx.fill();
+  ctx.fillStyle = '#6b7280';
+  ctx.font = '12px sans-serif';
+  ctx.fillText('Propulsé par esmy.ai', 200, 393);
+
+  // Download
+  const link = document.createElement('a');
+  link.download = 'qr-esmy-' + currentSlug + '.png';
+  link.href = dl.toDataURL('image/png');
+  link.click();
+  notif('⬇ QR code téléchargé !');
+}
+
+function copyQRLink() {
+  const url = 'https://esmy.ai/r/' + currentSlug;
+  navigator.clipboard.writeText(url).then(() => notif('📋 Lien copié !'));
+}
+
+function openWheelPage() {
+  if (currentSlug) window.open('https://esmy.ai/r/' + currentSlug, '_blank');
 }
 
 // ─── AI TONE ───
@@ -1544,7 +1670,57 @@ async function saveWheelConfig() {
 
 // ─── INIT ───
 function initDashboard() {
-  setTimeout(() => { initWheelConfig(); drawQRDash(); }, 100);
+  setTimeout(() => { initWheelConfig(); drawQRDash(); loadWheelConfig(); }, 100);
+}
+
+// ─── LOAD EXISTING WHEEL CONFIG ───
+async function loadWheelConfig() {
+  const { token, uid, key: ANON_KEY, url: SUPABASE_URL } = getAuthParams();
+  if (!token || !ANON_KEY || !SUPABASE_URL) return;
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/wheel_configs?user_id=eq.' + uid + '&order=updated_at.desc&limit=1', {
+      headers: {
+        'apikey': ANON_KEY,
+        'Authorization': 'Bearer ' + token
+      }
+    });
+
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data || !data.length) return;
+
+    const config = data[0];
+
+    // Pre-fill slug and google URL
+    if (config.slug) {
+      const slugInput = document.getElementById('wheel-slug');
+      if (slugInput) { slugInput.value = config.slug; updatePreviewLink(); }
+    }
+    if (config.google_maps_url) {
+      const urlInput = document.getElementById('wheel-google-url');
+      if (urlInput) urlInput.value = config.google_maps_url;
+    }
+
+    // Load prizes into wheel
+    if (config.prizes && config.prizes.length) {
+      prizes = config.prizes;
+      renderPrizeList();
+      drawWheelConfig(wAngle);
+
+      // Show saved status
+      const saveStatus = document.getElementById('save-status');
+      const saveSlug = document.getElementById('save-slug');
+      if (saveStatus && saveSlug) {
+        saveSlug.textContent = config.slug;
+        saveStatus.style.display = 'block';
+      }
+    }
+
+    notif('✅ Configuration chargée : esmy.ai/r/' + config.slug);
+  } catch(err) {
+    console.log('No existing wheel config found');
+  }
 }
 
 // Auto-login if coming from authenticated session
