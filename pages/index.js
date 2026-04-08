@@ -484,14 +484,7 @@ footer { background: var(--slate); padding: 56px 0 28px; }
 const BODY = `<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo">
-      <div class="logo-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5" fill="none"/>
-          <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
-        </svg>
-      </div>
-      esmy
+    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);">.</span>
     </a>
     <div class="nav-links">
       <a href="#fonctionnement">Comment ça marche</a>
@@ -1071,14 +1064,7 @@ const BODY = `<!-- NAV -->
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo">
-          <div class="logo-icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5" fill="none"/>
-              <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
-            </svg>
-          </div>
-          esmy
+        <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);">.</span>
         </a>
       </div>
       <div class="footer-col">
@@ -1203,7 +1189,7 @@ export default function Page() {
         <title>Esmy — Soyez trouvé quand vos clients cherchent "near me"</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" />
       </Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div dangerouslySetInnerHTML={{ __html: BODY }} />
