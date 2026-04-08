@@ -68,8 +68,8 @@ const BODY = `<nav>
         <a href="/about" data-fr="À propos" data-en="About">À propos</a>
       </div>
       <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇬🇧 EN</button>
       </div>
     </div>
   </div>
@@ -231,7 +231,7 @@ const BODY = `<nav>
 </footer>
 
 <script>
-let currentLang = 'fr';
+let currentLang = 'en';
 function setLang(lang) {
   currentLang = lang;
   document.getElementById('btn-fr').className = 'lang-btn' + (lang === 'fr' ? ' active' : '');
@@ -244,14 +244,14 @@ function setLang(lang) {
     ? 'Esmy — Google Business Profile API Documentation'
     : 'Esmy — Documentation API Google Business Profile';
 }
-setLang('fr');
+setLang('en');
 </script>`
 
 export default function Page() {
   return (
     <>
       <Head>
-        <title>Esmy — Documentation API Google Business Profile</title>
+        <title>Esmy — Google Business Profile API Documentation</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
