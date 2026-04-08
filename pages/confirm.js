@@ -45,9 +45,9 @@ export default function Confirm() {
     .btn:hover{background:#EA6C0A}
     .loader{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#F97316;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
     @keyframes spin{to{transform:rotate(360deg)}}
-    .logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:32px}
-    .logo-icon{width:32px;height:32px;background:#F97316;border-radius:8px;display:flex;align-items:center;justify-content:center}
-    .logo-text{font-size:20px;font-weight:800;color:white;letter-spacing:-.5px}
+    .logo{display:flex;align-items:center;gap:0;justify-content:center;margin-bottom:32px;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;color:white;text-decoration:none}
+    
+    
     .redirect{font-size:13px;color:rgba(255,255,255,.3);margin-top:12px}
   `
 
@@ -61,13 +61,7 @@ export default function Confirm() {
 
       <div className="card">
         <div className="logo">
-          <div className="logo-icon">
-            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-              <circle cx="9" cy="9" r="7" stroke="white" strokeWidth="1.5" fill="none"/>
-              <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
-            </svg>
-          </div>
-          <span className="logo-text">esmy</span>
+          esmy<span style={{color:'rgba(255,255,255,.35)'}}>.</span>
         </div>
 
         {status === 'loading' && (
