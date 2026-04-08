@@ -77,7 +77,7 @@ const BODY = `<nav>
 
     <h2>3. Intégration API Google Business Profile</h2>
     <div class="highlight-box">
-      <strong>Section spécifique API Google :</strong> Esmy est un partenaire API officiel de Google Business Profile. Cette section détaille précisément les données accédées via l'API.
+      <strong>Section spécifique API Google :</strong> Esmy a soumis une demande d'accès formelle à l'API Google Business Profile. Cette section détaille précisément les données accédées via l'API.
     </div>
     <h3>Endpoints utilisés</h3>
     <ul>
