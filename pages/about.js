@@ -64,7 +64,7 @@ footer{background:var(--slate);padding:40px 0 24px}
 
 const BODY = `<nav>
   <div class="nav-inner">
-    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);">.</span></a>
+    <a href="/" class="logo">Esmy<span style="color:rgba(255,255,255,.35);margin-left:-1px;">.</span></a>
     <div class="nav-links">
       <a href="/#fonctionnement">Comment ça marche</a>
       <a href="/#tarifs">Tarifs</a>
