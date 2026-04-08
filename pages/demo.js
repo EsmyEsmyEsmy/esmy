@@ -58,7 +58,7 @@ footer{background:var(--slate);padding:36px 0 22px}
 const BODY = `<nav>
   <div class="nav-inner">
     <a href="/" class="logo">
-      esmy<span style="color:rgba(255,255,255,.35);">.</span>
+      Esmy<span style="color:rgba(255,255,255,.35);margin-left:-1px;">.</span>
     </a>
     <div style="display:flex;align-items:center;gap:20px">
       <div class="nav-links">
