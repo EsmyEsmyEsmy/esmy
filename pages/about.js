@@ -121,7 +121,7 @@ const BODY = `<nav>
       </div>
       <div class="stat-box">
         <div class="stat-icon">⚡</div>
-        <div class="stat-num-clean">3 min</div>
+        <div class="stat-num-clean">10 min</div>
         <div class="stat-lbl">pour configurer et déployer votre QR code</div>
       </div>
     </div>
@@ -148,7 +148,7 @@ const BODY = `<nav>
       <div class="value-card">
         <div class="value-icon">🔒</div>
         <div class="value-title">Données protégées</div>
-        <div class="value-desc">Vos données et celles de vos clients ne seront jamais revendues, jamais partagées. Nous sommes RGPD-compliant et partenaire API officiel de Google.</div>
+        <div class="value-desc">Vos données et celles de vos clients ne seront jamais revendues, jamais partagées. Nous sommes RGPD-compliant et avons soumis une demande d'accès à l'API Google Business Profile.</div>
       </div>
     </div>
   </div>
