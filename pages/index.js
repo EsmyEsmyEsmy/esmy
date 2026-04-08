@@ -1011,7 +1011,7 @@ const BODY = `<!-- NAV -->
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M5 9h8" stroke="#ccc" stroke-width="2" stroke-linecap="round"/></svg><span class="pf-no">Roue de fortune</span></li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M5 9h8" stroke="#ccc" stroke-width="2" stroke-linecap="round"/></svg><span class="pf-no">SMS post-visite</span></li>
         </ul>
-        <a href="#" class="btn-plan-ghost">Démarrer</a>
+        <a href="/contact" class="btn-plan-ghost">Démarrer</a>
       </div>
 
       <div class="plan-card feat fade-in">
@@ -1028,7 +1028,7 @@ const BODY = `<!-- NAV -->
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>SMS post-visite</li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Analytics avancés</li>
         </ul>
-        <a href="#" class="btn-plan-w">Démarrer le Pro</a>
+        <a href="/contact" class="btn-plan-w">Démarrer le Pro</a>
       </div>
 
       <div class="plan-card fade-in">
@@ -1055,7 +1055,7 @@ const BODY = `<!-- NAV -->
 <section class="cta-section">
   <div class="container">
     <h2>Prêt à être #1 sur Google Maps ?</h2>
-    <p>Rejoignez les premiers commerçants qui dominent leur réputation locale avec Esmy.<br>Configuration en 3 minutes. Premiers avis en moins de 24h.</p>
+    <p>Rejoignez les premiers commerçants qui dominent leur réputation locale avec Esmy.<br>Configuration en 10 minutes. Premiers avis en moins de 24h.</p>
     <div class="cta-actions">
       <a href="#tarifs" class="btn-white-cta">
         Démarrer gratuitement
@@ -1116,6 +1116,38 @@ const SCRIPTS = `const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+function openModal(plan) {
+  document.getElementById('modal-plan-badge').textContent = 'Plan ' + plan;
+  var m = document.getElementById('contact-modal');
+  m.style.display = 'flex';
+  document.getElementById('modal-form').style.display = 'block';
+  document.getElementById('modal-success').style.display = 'none';
+  document.getElementById('cf-error').style.display = 'none';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var m = document.getElementById('contact-modal');
+  if (m) m.addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+});
+function submitContact() {
+  var name = document.getElementById('cf-name').value.trim();
+  var phone = document.getElementById('cf-phone').value.trim();
+  var email = document.getElementById('cf-email').value.trim();
+  var biz = document.getElementById('cf-biz').value.trim();
+  var errEl = document.getElementById('cf-error');
+  if (!name || !phone || !email || !biz) {
+    errEl.textContent = 'Veuillez remplir tous les champs.';
+    errEl.style.display = 'block'; return;
+  }
+  errEl.style.display = 'none';
+  document.getElementById('modal-form').style.display = 'none';
+  document.getElementById('modal-success').style.display = 'block';
+}
 
 // Redirect Supabase auth tokens to /confirm
 if (typeof window !== 'undefined' && window.location.hash.includes('access_token')) {
