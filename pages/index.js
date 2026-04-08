@@ -1108,7 +1108,49 @@ const BODY = `<!-- NAV -->
       </div>
     </div>
   </div>
-</footer>`
+</footer>
+
+<div id="contact-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(17,24,39,.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:white;border-radius:24px;padding:44px 40px;width:100%;max-width:460px;box-shadow:0 32px 80px rgba(0,0,0,.25);position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#9ca3af;line-height:1;">&#215;</button>
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="width:52px;height:52px;background:#F97316;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;">&#11088;</div>
+      <div id="modal-plan-badge" style="display:inline-block;background:#F97316;color:white;border-radius:100px;padding:4px 16px;font-size:12px;font-weight:700;margin-bottom:10px;">Plan Pro</div>
+      <h2 style="font-size:24px;font-weight:800;color:#111827;letter-spacing:-.5px;margin-bottom:6px;">Demarrons ensemble</h2>
+      <p style="font-size:14px;color:#6b7280;line-height:1.6;">Laissez vos coordonnees — nous vous contactons <strong style="color:#111827;">sous 24h</strong> pour configurer votre compte.</p>
+    </div>
+    <div id="modal-form">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;">Prenom et nom *</label>
+          <input id="cf-name" type="text" placeholder="Marie Dupont" style="width:100%;padding:11px 13px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;" />
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;">Telephone *</label>
+          <input id="cf-phone" type="tel" placeholder="06 12 34 56 78" style="width:100%;padding:11px 13px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;" />
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;">Email *</label>
+        <input id="cf-email" type="email" placeholder="contact@moncommerce.fr" style="width:100%;padding:11px 13px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;" />
+      </div>
+      <div style="margin-bottom:22px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;">Nom du commerce *</label>
+        <input id="cf-biz" type="text" placeholder="La Bella Pizza" style="width:100%;padding:11px 13px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;" />
+      </div>
+      <div id="cf-error" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 13px;font-size:13px;color:#dc2626;margin-bottom:12px;"></div>
+      <button onclick="submitContact()" style="width:100%;padding:15px;background:#F97316;color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">Envoyer ma demande &#8594;</button>
+      <p style="text-align:center;font-size:12px;color:#9ca3af;margin-top:10px;">Sans engagement &#183; Nous vous rappelons sous 24h</p>
+    </div>
+    <div id="modal-success" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:52px;margin-bottom:16px;">&#127881;</div>
+      <h3 style="font-size:22px;font-weight:800;color:#111827;margin-bottom:8px;">Demande envoyee !</h3>
+      <p style="font-size:14px;color:#6b7280;line-height:1.65;margin-bottom:24px;">Merci ! Notre equipe vous contactera <strong style="color:#111827;">sous 24 heures</strong> pour configurer votre compte Esmy.</p>
+      <button onclick="closeModal()" style="padding:13px 28px;background:#111827;color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;">Fermer</button>
+    </div>
+  </div>
+</div>
+<style>#contact-modal.open{display:flex!important;}</style>`
 
 const SCRIPTS = `const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -1120,7 +1162,7 @@ document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 function openModal(plan) {
   document.getElementById('modal-plan-badge').textContent = 'Plan ' + plan;
   var m = document.getElementById('contact-modal');
-  m.style.display = 'flex';
+  m.style.cssText = 'display:flex;position:fixed;inset:0;z-index:9999;background:rgba(17,24,39,.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;';
   document.getElementById('modal-form').style.display = 'block';
   document.getElementById('modal-success').style.display = 'none';
   document.getElementById('cf-error').style.display = 'none';
