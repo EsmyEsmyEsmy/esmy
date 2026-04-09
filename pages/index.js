@@ -484,7 +484,7 @@ footer { background: var(--slate); padding: 56px 0 28px; }
 const BODY = `<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo">Esmy<span style="color:rgba(255,255,255,.35);margin-left:-1px;">.</span>
+    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);letter-spacing:-.5px;margin-left:-2px;">.</span>
     </a>
     <div class="nav-links">
       <a href="#fonctionnement">Comment ça marche</a>
@@ -1064,7 +1064,7 @@ const BODY = `<!-- NAV -->
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo">Esmy<span style="color:rgba(255,255,255,.35);margin-left:-1px;">.</span>
+        <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);letter-spacing:-.5px;margin-left:-2px;">.</span>
         </a>
       </div>
       <div class="footer-col">
