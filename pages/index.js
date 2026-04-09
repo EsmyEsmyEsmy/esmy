@@ -484,7 +484,7 @@ footer { background: var(--slate); padding: 56px 0 28px; }
 const BODY = `<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);letter-spacing:-.5px;margin-left:-2px;">.</span>
+    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);margin-left:-3px;">.</span>
     </a>
     <div class="nav-links">
       <a href="#fonctionnement">Comment ça marche</a>
@@ -1064,7 +1064,7 @@ const BODY = `<!-- NAV -->
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);letter-spacing:-.5px;margin-left:-2px;">.</span>
+        <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);margin-left:-3px;">.</span>
         </a>
       </div>
       <div class="footer-col">
@@ -1100,7 +1100,7 @@ const BODY = `<!-- NAV -->
   <div style="background:white;border-radius:24px;padding:44px 40px;width:100%;max-width:460px;box-shadow:0 32px 80px rgba(0,0,0,.25);position:relative;">
     <button onclick="closeModal()" style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#9ca3af;line-height:1;">&#215;</button>
     <div style="text-align:center;margin-bottom:28px;">
-      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;color:#111827;letter-spacing:-.02em;margin:0 auto 14px;text-align:center;">esmy<span style="color:#F97316;margin-left:-2px;letter-spacing:-.5px;">.</span></div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;color:#111827;letter-spacing:-.02em;margin:0 auto 14px;text-align:center;">esmy<span style="color:rgba(0,0,0,.25);margin-left:-3px;">.</span></div>
       <div id="modal-plan-badge" style="display:inline-block;background:#F97316;color:white;border-radius:100px;padding:4px 16px;font-size:12px;font-weight:700;margin-bottom:10px;">Plan Pro</div>
       <h2 style="font-size:24px;font-weight:800;color:#111827;letter-spacing:-.5px;margin-bottom:6px;">Demarrons ensemble</h2>
       <p style="font-size:14px;color:#6b7280;line-height:1.6;">Laissez vos coordonnees — nous vous contactons <strong style="color:#111827;">sous 24h</strong> pour configurer votre compte.</p>
