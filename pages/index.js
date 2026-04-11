@@ -469,12 +469,56 @@ footer { background: var(--slate); padding: 56px 0 28px; }
 @media (max-width: 900px) {
   .hero-grid, .feature-block, .feature-block.rev, .near-grid { grid-template-columns: 1fr; }
   .feature-block.rev .feature-visual { order: 0; }
-  .steps, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .steps, .testi-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
   .stats-inner { grid-template-columns: repeat(2,1fr); }
   .hero-right { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .steps::before { display: none; }
   .near-section { padding: 60px 0; }
+  .nav-links { display: none; }
+  .nav-cta .login { display: none; }
+  section { padding: 60px 0; }
+  .hero { padding: 90px 0 60px; min-height: auto; }
+  .hero-h1 { font-size: 32px; letter-spacing: -1px; }
+  .hero-sub { font-size: 15px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions a { text-align: center; justify-content: center; }
+  .near-me-pill { font-size: 11px; }
+  .stats-inner { gap: 0; }
+  .stat-item { padding: 20px 12px; }
+  .stat-num { font-size: 28px; }
+  .feature-block { padding: 36px 0; gap: 32px; }
+  .feature-visual { display: none; }
+  .section-title { font-size: 26px; }
+  .section-sub { font-size: 15px; }
+  .step-card { padding: 22px; }
+  .testi-card { padding: 20px; }
+  .plan-card { padding: 24px; }
+  .plan-price { font-size: 36px; }
+  .cta-section { padding: 64px 0; }
+  .cta-section h2 { font-size: 26px; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-links { justify-content: center; flex-wrap: wrap; gap: 12px; }
+  .near-grid { gap: 36px; }
+  .near-title { font-size: 26px; }
+  .near-facts { gap: 10px; }
+  .compliance-row { flex-wrap: wrap; gap: 6px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .nav-inner { padding: 0 16px; }
+  .hero-h1 { font-size: 28px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .stat-num { font-size: 24px; }
+  .steps { gap: 16px; }
+  .testi-grid { gap: 16px; }
+  .pricing-grid { gap: 16px; }
+  .plan-badge { font-size: 10px; padding: 3px 12px; }
+  .hero-social { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 
 /* ── ANIMATIONS ── */
@@ -993,7 +1037,7 @@ const BODY = `<!-- NAV -->
     <div class="pricing-grid">
       <div class="plan-card fade-in">
         <div class="plan-name">Starter</div>
-        <div class="plan-price"><sup>€</sup>29<span> /mois</span></div>
+        <div class="plan-price"><sup>€</sup>33<span> /mois</span></div>
         <div class="plan-tag">1 établissement · Pour démarrer</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
@@ -1010,7 +1054,7 @@ const BODY = `<!-- NAV -->
       <div class="plan-card feat fade-in">
         <div class="plan-badge">Le plus populaire</div>
         <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>€</sup>79<span> /mois</span></div>
+        <div class="plan-price"><sup>€</sup>69<span> /mois</span></div>
         <div class="plan-tag">Jusqu'à 3 établissements</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
