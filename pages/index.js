@@ -397,13 +397,32 @@ const BODY = `
   </div>
 </section>
 
-<div class="stats-bar">
+<div style="background:white;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);padding:52px 0;">
   <div class="container">
-    <div class="stats-inner">
-      <div class="stat-item"><div class="stat-num">+300<span class="accent">%</span></div><div class="stat-label">d'avis collectés chez certains commerçants</div></div>
-      <div class="stat-item"><div class="stat-num">&lt;24<span class="accent">h</span></div><div class="stat-label">pour recevoir les premiers avis clients</div></div>
-      <div class="stat-item"><div class="stat-num">94<span class="accent">%</span></div><div class="stat-label">des avis reçoivent une réponse IA</div></div>
-      <div class="stat-item"><div class="stat-num">10<span class="accent">min</span></div><div class="stat-label">pour configurer et déployer votre QR code</div></div>
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+      <div style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;">Harvard Business Review · Étude prouvée</div>
+      <p style="font-size:clamp(18px,2.5vw,26px);font-weight:800;color:var(--slate);line-height:1.35;letter-spacing:-.5px;margin-bottom:16px;">
+        Augmenter votre note Google d'<span style="color:var(--orange);">une seule étoile</span><br>
+        génère entre <span style="color:var(--orange);">5% et 9% de revenus supplémentaires.</span>
+      </p>
+      <p style="font-size:16px;color:var(--textsub);line-height:1.7;max-width:580px;margin:0 auto 36px;">
+        Aujourd'hui, <strong style="color:var(--slate);">92% des consommateurs</strong> refusent de faire affaire avec une entreprise notée sous 4 étoiles. Passer de 3.9 à 4.0 n'est pas un détail — c'est un levier de croissance massif.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--g200);border-radius:var(--rlg);overflow:hidden;max-width:640px;margin:0 auto;">
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--g200);">
+          <div style="font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-1.5px;line-height:1;">+9%</div>
+          <div style="font-size:12px;color:var(--textsub);margin-top:4px;line-height:1.4;">de revenus par étoile<br>gagnée sur Google</div>
+        </div>
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--g200);">
+          <div style="font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-1.5px;line-height:1;">92%</div>
+          <div style="font-size:12px;color:var(--textsub);margin-top:4px;line-height:1.4;">des clients évitent<br>les notes sous 4★</div>
+        </div>
+        <div style="padding:24px 20px;text-align:center;">
+          <div style="font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-1.5px;line-height:1;">×3</div>
+          <div style="font-size:12px;color:var(--textsub);margin-top:4px;line-height:1.4;">plus de clics pour<br>les fiches à 4.5★+</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:11px;color:var(--g400);">Sources : Harvard Business Review · BrightLocal Consumer Review Survey 2024</div>
     </div>
   </div>
 </div>
