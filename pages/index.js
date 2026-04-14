@@ -310,7 +310,7 @@ const BODY = `
         </div>
         <h1 class="hero-h1">
           Soyez #1 quand<br>vos clients cherchent<br>
-          <span class="near">"près de moi"</span>
+          <span style="color:var(--orange);font-style:italic;">"près de moi"</span>
         </h1>
         <p class="hero-sub">Esmy collecte automatiquement vos avis Google grâce à la gamification, répond à chaque avis avec l'IA, et vous fait remonter dans le pack local Google — en moins d'une semaine.</p>
         <div class="hero-actions">
@@ -435,7 +435,7 @@ const BODY = `
         <h2 class="near-title">"Restaurant near me"<br>— votre client cherche.<br>Êtes-vous visible ?</h2>
         <p class="near-desc">Google classe les commerces locaux selon 3 critères : pertinence, distance, et <strong style="color:white;">notoriété</strong>. Plus vous avez d'avis récents et bien notés, plus vous apparaissez haut dans le "Local Pack" — les 3 fiches qui captent 70% des clics.</p>
         <div class="near-facts">
-          <div class="near-fact"><div class="ico">📍</div><span>58% des recherches Google incluent "near me" ou "près de moi" en 2025</span></div>
+          <div class="near-fact"><div class="ico">📍</div><span>58% des recherches Google incluent "near me" ou <span style="color:var(--orange);font-style:italic;">"près de moi"</span> en 2025</span></div>
           <div class="near-fact"><div class="ico">⭐</div><span>Les 3 premières fiches Google captent 70% des appels et visites</span></div>
           <div class="near-fact"><div class="ico">📈</div><span>Un commerce avec 4.5+ ★ et 50+ avis récents passe systématiquement en tête</span></div>
           <div class="near-fact"><div class="ico">🤖</div><span>Répondre à vos avis améliore votre score de pertinence Google</span></div>
