@@ -179,7 +179,7 @@ export default function Page() {
         <title>À propos — Esmy</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,wght@0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
       </Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div dangerouslySetInnerHTML={{ __html: BODY }} />
