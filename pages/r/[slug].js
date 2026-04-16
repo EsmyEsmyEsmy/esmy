@@ -138,15 +138,15 @@ export default function WheelPage({ config }) {
               <div className="brand-sub">Votre avis compte !</div>
             </div>
           </div>
-          <div className="step-pill">Étape <span id="step-num">1</span> / 3</div>
+          <div className="step-pill">Étape <span id="step-num">1</span> / 2</div>
         </div>
         <div className="divider"></div>
 
-        {/* Screen 1 */}
+        {/* Screen 1 — Welcome, wheel first */}
         <div className="screen on" id="s1">
           <div className="eyebrow">Offre exclusive</div>
-          <div className="hero-title">Laissez un avis &<br /><span>gagnez un cadeau</span></div>
-          <p className="hero-sub">Un petit geste qui nous aide énormément — et en échange, tentez de gagner l'un de nos lots !</p>
+          <div className="hero-title">Tentez votre<br /><span>chance !</span></div>
+          <p className="hero-sub">Merci de votre visite — en guise de remerciement, nous vous offrons un tour de roue gratuit pour tenter de gagner l'un de nos lots.</p>
 
           <div className="prize-teaser">
             <div className="pt-icon">🎁</div>
@@ -156,26 +156,10 @@ export default function WheelPage({ config }) {
             </div>
           </div>
 
-          <div className="steps-list">
-            <div className="step-item">
-              <div className="step-num">1</div>
-              <div><div className="step-txt">Laissez votre avis Google</div><div className="step-desc">Cliquez sur le bouton ci-dessous</div></div>
-            </div>
-            <div className="step-item">
-              <div className="step-num">2</div>
-              <div><div className="step-txt">Revenez sur cette page</div><div className="step-desc">Cliquez "J'ai laissé mon avis"</div></div>
-            </div>
-            <div className="step-item">
-              <div className="step-num">3</div>
-              <div><div className="step-txt">Tournez la roue !</div><div className="step-desc">Un lot vous attend 🤞</div></div>
-            </div>
-          </div>
-
-          <button className="btn-google" onClick={() => { if (typeof openGoogle !== "undefined") openGoogle(); }}>
-            <div className="g-badge">G</div>
-            Laisser mon avis Google
+          <button className="btn-google" style={{background:'#F97316',marginTop:'8px'}} onClick={() => { if (typeof goToWheel !== "undefined") goToWheel(); }}>
+            🎡 Tourner la roue
           </button>
-          <div className="already-done" onClick={() => { if (typeof goToWheel !== "undefined") goToWheel(); }}>J'ai déjà laissé mon avis →</div>
+          <div className="already-done" style={{marginTop:'16px',fontSize:'12px',color:'#9ca3af'}}>Votre lot est offert sans aucune condition.</div>
         </div>
 
         {/* Screen 2 - Wheel */}
@@ -236,6 +220,24 @@ export default function WheelPage({ config }) {
           </div>
         </div>
 
+        {/* Screen 3b — Optional Google review invitation (shown after prize claim) */}
+        <div className="screen" id="s-review">
+          <div style={{textAlign:'center',marginBottom:'20px'}}>
+            <div style={{fontSize:'48px',marginBottom:'10px'}}>⭐</div>
+            <div className="result-eyebrow">Une dernière chose...</div>
+            <div className="result-title" style={{fontSize:'24px',marginTop:'8px'}}>Vous avez aimé votre visite ?</div>
+          </div>
+          <p style={{fontSize:'14px',color:'#6b7280',textAlign:'center',lineHeight:'1.65',marginBottom:'24px'}}>
+            Si vous souhaitez partager votre expérience — positive ou constructive — nous vous serions reconnaissants.
+            C'est entièrement optionnel et n'a <strong>aucun lien avec votre lot déjà gagné</strong>.
+          </p>
+          <button className="btn-google" onClick={() => { if (typeof openGoogleOptional !== "undefined") openGoogleOptional(); }}>
+            <div className="g-badge">G</div>
+            Partager mon expérience sur Google
+          </button>
+          <div className="already-done" onClick={() => { if (typeof skipReview !== "undefined") skipReview(); }} style={{marginTop:'12px'}}>Continuer sans laisser d'avis →</div>
+        </div>
+
         {/* Screen 3b — Confirmed */}
         <div className="screen" id="s3b">
           <div style={{textAlign:'center',marginBottom:'20px'}}>
@@ -275,10 +277,10 @@ function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
 }
-function openGoogle() {
+function openGoogleOptional() {
   if (googleUrl && googleUrl !== '#') window.open(googleUrl, '_blank');
-  setTimeout(goToWheel, 1000);
 }
+function skipReview() { showConfirmed(); }
 function goToWheel() { setStep(2); show('s2'); setTimeout(initWheel, 60); }
 
 let wCtx, spinning = false, angle = 0;
@@ -338,7 +340,7 @@ let currentCode = '';
 let currentPrizeObj = null;
 
 function showResult(prize) {
-  setStep(3);
+  setStep(2);
   currentPrizeObj = prize;
   currentCode = 'E-'+Math.random().toString(36).substring(2,7).toUpperCase();
   // Fill result card in s3
@@ -374,8 +376,15 @@ function showConfirmed() {
   if(s3b) { s3b.classList.add('on'); }
 }
 
-function claimPrize() { showConfirmed(); }
-function skipForm() { showConfirmed(); }
+function claimPrize() {
+  // Save contact data here if needed, then offer optional Google review
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+  document.getElementById('s-review').classList.add('on');
+}
+function skipForm() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+  document.getElementById('s-review').classList.add('on');
+}
 function doConfetti() {
   const cols=['#F97316','#111827','#F59E0B','#16A34A','#7C3AED','#EF4444'];
   for(let i=0;i<50;i++){
