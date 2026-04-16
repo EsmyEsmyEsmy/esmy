@@ -88,7 +88,7 @@ const BODY = `<nav>
       <div>
         <h2>Pourquoi Esmy existe</h2>
         <p class="sub">En 2023, en travaillant avec des restaurateurs et commerçants, nous avons observé quelque chose d'évident. On partage tous notre avis quand c'est négatif — rarement autrement. Esmy change ça.</p>
-        <p class="sub">On a construit Esmy pour changer ça. Pas avec des tactiques douteuses, mais avec une mécanique honnête : donner aux clients une raison ludique de partager leur expérience, et automatiser tout le reste avec l'IA.</p>
+        <p class="sub">On a construit Esmy pour changer ça. Pas avec des tactiques douteuses, mais avec une mécanique honnête : donner aux clients une raison ludique de se souvenir de leur visite, et faciliter leur retour si ça se présente.</p>
       </div>
       <div style="background:white;border:1px solid var(--g200);border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(17,24,39,.08)">
         <div style="font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px">Notre mission</div>
