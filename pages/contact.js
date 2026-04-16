@@ -32,8 +32,7 @@ export default function Contact() {
     .bg::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.08) 0%,transparent 70%);pointer-events:none}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,24,39,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1140px;margin:0 auto;padding:0 24px}
-    .logo{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.5px}
-    .logo-icon{width:32px;height:32px;background:#F97316;border-radius:8px;display:flex;align-items:center;justify-content:center}
+    .logo{display:flex;align-items:center;gap:0;color:white;text-decoration:none;font-weight:700;font-size:22px;letter-spacing:-.04em;font-family:'Bricolage Grotesque',sans-serif}
     .back-link{color:rgba(255,255,255,.5);text-decoration:none;font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:6px;transition:color .15s}
     .back-link:hover{color:white}
     .wrap{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start;position:relative;z-index:1}
@@ -80,15 +79,7 @@ export default function Contact() {
 
       <nav>
         <div className="nav-inner">
-          <a href="/" className="logo">
-            <div className="logo-icon">
-              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="white" strokeWidth="1.5" fill="none"/>
-                <path d="M9 2L10.2 6H14.5L11.1 8.4 12.3 12.5 9 10.2 5.7 12.5 6.9 8.4 3.5 6H7.8Z" fill="white"/>
-              </svg>
-            </div>
-            esmy
-          </a>
+          <a href="/" className="logo">esmy<span style={{color:'#F97316',marginLeft:'-2px',letterSpacing:'-.5px'}}>.</span></a>
           <a href="/" className="back-link">← Retour</a>
         </div>
       </nav>
