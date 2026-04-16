@@ -6,8 +6,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
 .container{max-width:1060px;margin:0 auto;padding:0 24px}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,24,39,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1060px;margin:0 auto;padding:0 24px}
-.logo{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;font-weight:800;font-size:20px}
-.logo-icon{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo{display:flex;align-items:center;gap:0;color:white;text-decoration:none;font-weight:700;font-size:22px;letter-spacing:-.04em;font-family:'Bricolage Grotesque',sans-serif}
 .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;margin-left:24px;font-weight:500}
 .lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:4px}
 .lang-btn{padding:5px 12px;border-radius:100px;font-size:12.5px;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.5);transition:all .2s}
@@ -57,9 +56,7 @@ footer{background:var(--slate);padding:36px 0 22px}
 
 const BODY = `<nav>
   <div class="nav-inner">
-    <a href="/" class="logo">
-      esmy<span style="color:rgba(255,255,255,.35);letter-spacing:-.5px;margin-left:-2px;">.</span>
-    </a>
+    <a href="/" class="logo">esmy<span style="color:#F97316;margin-left:-2px;letter-spacing:-.5px;">.</span></a>
     <div style="display:flex;align-items:center;gap:20px">
       <div class="nav-links">
         <a href="/" data-fr="Accueil" data-en="Home">Accueil</a>
