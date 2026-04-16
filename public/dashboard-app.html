@@ -529,7 +529,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
         <div class="tag tag-green"><span class="dot"></span> Actif</div>
       </div>
       <div class="topbar-right">
-        <div class="filter-label" id="filter-label"><strong>Ce mois</strong> — Mars 2026</div>
+        <div class="filter-label" id="filter-label"><strong>DONNÉES DE DÉMONSTRATION</strong> · Ce mois</div>
         <div class="date-filters" style="position:relative">
           <div class="df-pill" onclick="setFilter(this,'today')">Aujourd'hui</div>
           <div class="df-pill" onclick="setFilter(this,'week')">7 jours</div>
@@ -751,7 +751,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
             <button class="sf-btn" onclick="filterStars(this,'1')">★</button>
           </div>
           <div style="margin-left:auto;display:flex;gap:8px">
-            <button class="btn btn-primary btn-sm" onclick="notif('🤖 Réponses IA générées pour tous les avis en attente')">🤖 Tout répondre</button>
+            <button class="btn btn-primary btn-sm" onclick="notif('💡 Ouvrez chaque avis pour consulter la suggestion IA')">💡 Voir les suggestions IA</button>
           </div>
         </div>
 
@@ -767,7 +767,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
                 </div>
                 <div class="rv-text">Service exceptionnel, personnel très attentionné. Je reviendrai sans hésiter !</div>
                 <div class="rv-reply">
-                  <div class="rv-reply-lbl">Réponse IA · Publiée sur Google</div>
+                  <div class="rv-reply-lbl">Réponse IA approuvée et publiée</div>
                   <div class="rv-reply-text">Merci infiniment pour votre magnifique retour, chère Marie ! Toute l'équipe est ravie. À très bientôt ! 🍕</div>
                 </div>
               </div>
@@ -789,7 +789,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
               </div>
               <div class="rv-actions">
                 <span class="tag tag-red">⚠ Urgent</span>
-                <button class="btn btn-primary btn-sm" onclick="notif('✅ Réponse publiée sur Google !')">Publier</button>
+                <button class="btn btn-primary btn-sm" onclick="notif('✅ Réponse approuvée — publication en cours')">Publier</button>
                 <button class="btn btn-ghost btn-sm" onclick="notif('🔄 Nouvelle version générée')">Régénérer</button>
               </div>
             </div>
@@ -809,7 +809,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
               </div>
               <div class="rv-actions">
                 <span class="tag tag-gold">⏳ En attente</span>
-                <button class="btn btn-primary btn-sm" onclick="notif('✅ Réponse publiée sur Google !')">Publier</button>
+                <button class="btn btn-primary btn-sm" onclick="notif('✅ Réponse approuvée — publication en cours')">Publier</button>
                 <button class="btn btn-ghost btn-sm" onclick="notif('🔄 Nouvelle version générée')">Régénérer</button>
               </div>
             </div>
@@ -823,7 +823,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
                 </div>
                 <div class="rv-text">Parfait comme toujours. La meilleure adresse du quartier, équipe au top !</div>
                 <div class="rv-reply">
-                  <div class="rv-reply-lbl">Réponse IA · Publiée sur Google</div>
+                  <div class="rv-reply-lbl">Réponse IA approuvée et publiée</div>
                   <div class="rv-reply-text">Merci Sophie pour votre fidélité ! ❤️ C'est grâce à vous qu'on donne le meilleur chaque jour. À très bientôt !</div>
                 </div>
               </div>
@@ -839,7 +839,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
                 </div>
                 <div class="rv-text">Très bonne pizza, cadre agréable. Juste un peu bruyant le soir.</div>
                 <div class="rv-reply">
-                  <div class="rv-reply-lbl">Réponse IA · Publiée sur Google</div>
+                  <div class="rv-reply-lbl">Réponse IA approuvée et publiée</div>
                   <div class="rv-reply-text">Merci Lucas ! Nous prenons note pour l'ambiance sonore. Ravi que la pizza vous ait plu ! 🍕</div>
                 </div>
               </div>
@@ -895,7 +895,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
               <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
                 <div style="text-align:center"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700">×3.2</div><div style="font-size:11px;color:var(--t3);margin-top:3px">avis en 6 mois</div></div>
                 <div style="text-align:center"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700">+1.6★</div><div style="font-size:11px;color:var(--t3);margin-top:3px">gain de note</div></div>
-                <div style="text-align:center"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700">#1</div><div style="font-size:11px;color:var(--t3);margin-top:3px">Google Maps</div></div>
+                <div style="text-align:center"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700">↑</div><div style="font-size:11px;color:var(--t3);margin-top:3px">Visibilité en hausse</div></div>
               </div>
             </div>
           </div>
@@ -1050,7 +1050,7 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
               </div>
               <div class="field-group">
                 <div class="field-label">Instructions spéciales</div>
-                <textarea class="field-input" style="min-height:80px;resize:vertical;line-height:1.6">Pour les avis ≤ 2★ : proposer un geste commercial. Toujours mentionner la loterie de mars dans les réponses aux avis 4-5★.</textarea>
+                <textarea class="field-input" style="min-height:80px;resize:vertical;line-height:1.6">Précisions sur votre commerce — spécialités, valeurs, événements à venir. L'IA les utilisera pour personnaliser ses suggestions de réponses.</textarea>
               </div>
               <button class="btn btn-primary" style="width:100%" onclick="notif('✅ Configuration IA sauvegardée !')">Sauvegarder</button>
             </div>
@@ -1059,16 +1059,16 @@ canvas#wheel-config { border-radius: 50%; box-shadow: 0 4px 24px rgba(0,0,0,0.08
             <div class="card-header"><div class="card-title">Automatisation</div></div>
             <div class="card-body">
               <div class="config-row">
-                <div><div class="config-lbl">Auto-réponse aux avis 5★</div><div class="config-sub">Publie directement sans validation</div></div>
+                <div><div class="config-lbl">Suggestions IA activées</div><div class="config-sub">L'IA prépare les réponses — vous validez toujours avant publication</div></div>
                 <div class="toggle on" onclick="this.classList.toggle('on')"></div>
               </div>
               <div class="config-row">
-                <div><div class="config-lbl">Alerte avis ≤ 2★</div><div class="config-sub">Notification immédiate par email</div></div>
+                <div><div class="config-lbl">Notification nouveaux avis</div><div class="config-sub">Recevez un email pour chaque nouvel avis reçu</div></div>
                 <div class="toggle on" onclick="this.classList.toggle('on')"></div>
               </div>
               <div class="config-row">
-                <div><div class="config-lbl">Mention loterie dans les réponses</div><div class="config-sub">Rappeler le tirage en cours</div></div>
-                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                <div><div class="config-lbl">Mention événements en cours</div><div class="config-sub">Inviter l'IA à inclure vos actualités (optionnel)</div></div>
+                <div class="toggle" onclick="this.classList.toggle('on')"></div>
               </div>
               <div class="config-row">
                 <div><div class="config-lbl">Mémoire client</div><div class="config-sub">Reconnaître les clients fidèles</div></div>
