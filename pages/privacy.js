@@ -26,7 +26,7 @@ footer{background:var(--slate);padding:32px 0 20px}
 
 const BODY = `<nav>
   <div class="nav-inner">
-    <a href="/" class="logo">esmy<span style="color:rgba(255,255,255,.35);margin-left:-2px;letter-spacing:-.5px;">.</span></a>
+    <a href="/" class="logo">esmy<span style="color:#F97316;margin-left:-2px;letter-spacing:-.5px;">.</span></a>
     <a href="/" style="font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;">← Retour</a>
   </div>
 </nav>
