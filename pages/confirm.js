@@ -61,7 +61,7 @@ export default function Confirm() {
 
       <div className="card">
         <div className="logo">
-          esmy<span style={{color:'rgba(255,255,255,.35)',marginLeft:'-3px',letterSpacing:'-.5px'}}>.</span>
+          esmy<span style={{color:'#F97316',marginLeft:'-2px',letterSpacing:'-.5px'}}>.</span>
         </div>
 
         {status === 'loading' && (
