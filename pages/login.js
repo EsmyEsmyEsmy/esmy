@@ -57,8 +57,7 @@ export default function Login() {
     body{font-family:'Plus Jakarta Sans',sans-serif;background:#111827;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow:hidden}
     body::before{content:'';position:fixed;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.1) 0%,transparent 70%);pointer-events:none}
     .card{background:#1F2937;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:48px 44px;width:100%;max-width:420px;box-shadow:0 24px 80px rgba(0,0,0,.4);position:relative;z-index:1}
-    .logo{display:flex;align-items:center;gap:0;margin-bottom:32px;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.04em;color:white;text-decoration:none}
-    .logo-icon{width:36px;height:36px;background:#F97316;border-radius:9px;display:flex;align-items:center;justify-content:center}
+    .logo{display:flex;align-items:center;gap:0;margin-bottom:32px;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.04em;color:white;text-decoration:none}
     
     h1{font-size:24px;font-weight:800;color:white;margin-bottom:6px;letter-spacing:-.5px;text-align:center}
     .sub{font-size:14px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:32px}
@@ -96,9 +95,7 @@ export default function Login() {
       <style dangerouslySetInnerHTML={{ __html: css }} />
 
       <div className="card">
-        <div className="logo">
-esmy<span style={{color:'rgba(255,255,255,.35)',marginLeft:'-3px',letterSpacing:'-.5px'}}>.</span>
-        </div>
+        <div className="logo">esmy<span style={{color:'#F97316',marginLeft:'-2px',letterSpacing:'-.5px'}}>.</span></div>
 
         <h1>{mode === 'login' ? 'Bon retour 👋' : 'Créer un compte'}</h1>
         <p className="sub">{mode === 'login' ? 'Connectez-vous à votre espace commerçant' : 'Commencez votre essai gratuit de 14 jours'}</p>
