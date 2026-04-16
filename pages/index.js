@@ -327,8 +327,8 @@ const BODY = `
             <div class="av av-d">L</div>
           </div>
           <div class="hero-social-txt">
-            <strong>33 commerçants</strong> inscrits pour la sortie<br>
-            14 jours gratuits · Sans carte bancaire
+            <strong>14 jours gratuits</strong> · Sans carte bancaire<br>
+            Accompagnement personnalisé au lancement
           </div>
         </div>
       </div>
@@ -619,7 +619,7 @@ const BODY = `
     <div class="text-center fade-in">
       <div class="section-badge" style="background:rgba(249,115,22,.15);color:var(--orange);">🚀 En lancement</div>
       <h2 class="section-title">Rejoignez les premiers utilisateurs d'Esmy</h2>
-      <p class="section-sub" style="margin-bottom:32px;">Esmy est en phase de lancement. 33 commerçants nous ont déjà rejoints pour tester la plateforme — bénéficiez des 14 jours gratuits et d'un accompagnement personnalisé.</p>
+      <p class="section-sub" style="margin-bottom:32px;">Esmy est en phase de lancement. Bénéficiez dès aujourd'hui de 14 jours gratuits et d'un accompagnement personnalisé pour tester la plateforme.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px;max-width:880px;margin-left:auto;margin-right:auto;">
         <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--rlg);padding:28px;text-align:center;">
           <div style="font-size:36px;margin-bottom:12px;">🎡</div>
@@ -907,8 +907,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Esmy — Soyez #1 sur Google Maps</title>
-        <meta name="description" content="Esmy multiplie vos avis Google grâce à la gamification et répond automatiquement à chaque commentaire avec l'IA." />
+        <title>Esmy — Améliorez votre présence locale</title>
+        <meta name="description" content="Esmy aide les commerçants locaux à améliorer leur présence sur Google grâce à la gamification et aux suggestions IA de réponses aux avis." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
       </Head>
