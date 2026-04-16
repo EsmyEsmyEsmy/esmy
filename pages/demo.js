@@ -134,7 +134,7 @@ const BODY = `<nav>
         <div class="step-details">
           <div class="step-detail" data-fr="Réponse adaptée au contenu de l'avis et à vos préférences" data-en="Reply adapted to review content and your preferences">Réponse adaptée au contenu de l'avis et à vos préférences</div>
           <div class="step-detail" data-fr="Vous pouvez modifier, regénérer ou rejeter la suggestion" data-en="You can edit, regenerate, or discard the suggestion">Vous pouvez modifier, regénérer ou rejeter la suggestion</div>
-          <div class="step-detail" data-fr="Alertes immédiates pour les avis négatifs urgents" data-en="Immediate alerts for urgent negative reviews">Alertes immédiates pour les avis négatifs urgents</div>
+          <div class="step-detail" data-fr="Suivi de tous vos avis dans un tableau de bord unifié" data-en="All reviews tracked in one unified dashboard">Suivi de tous vos avis dans un tableau de bord unifié</div>
           <div class="step-detail" data-fr="Approbation en un clic depuis le dashboard" data-en="One-click approval from the dashboard">Approbation en un clic depuis le dashboard</div>
         </div>
         <div class="endpoint-tag" data-fr="→ Traitement IA — aucun appel API à cette étape" data-en="→ AI processing only — no API call at this step">→ Traitement IA — aucun appel API à cette étape</div>
