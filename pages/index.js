@@ -497,7 +497,7 @@ const BODY = `
         <div class="step-num">2</div>
         <div class="step-icon">🎡</div>
         <div class="step-title">Il laisse son avis — et joue</div>
-        <div class="step-desc">La roue de la chance se déverrouille après l'avis Google. La récompense est garantie quelle que soit la note donnée.</div>
+        <div class="step-desc">Le client est invité à partager son expérience honnête sur Google — quelle que soit sa note. Il tourne ensuite la roue et découvre son lot surprise.</div>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">3</div>
@@ -522,7 +522,6 @@ const BODY = `
           <li>Probabilités configurables par lot, roue temps réel</li>
           <li>Code unique généré — présenté en caisse</li>
           <li>100% conforme aux règles Google Business</li>
-          <li>Données clients collectées automatiquement</li>
         </ul>
       </div>
       <div class="feature-visual">
@@ -550,10 +549,6 @@ const BODY = `
               <div class="wheel-lot"><span style="font-size:12px;">🎁</span><div><div class="wheel-lot-name">Bon 20€</div><div class="wheel-lot-pct">25%</div></div></div>
               <div class="wheel-lot"><span style="font-size:12px;">🏝️</span><div><div class="wheel-lot-name">Week-end spa</div><div class="wheel-lot-pct">5%</div></div></div>
             </div>
-          </div>
-          <div style="margin-top:10px;padding:10px 12px;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.15);border-radius:var(--r);display:flex;align-items:center;gap:10px;">
-            <div style="font-size:14px;flex-shrink:0;">📊</div>
-            <div style="font-size:11px;color:var(--textsub);line-height:1.5;">Données clients collectées automatiquement après chaque spin.</div>
           </div>
         </div>
       </div>
@@ -702,7 +697,7 @@ const BODY = `
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tout le plan Starter</li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roue de fortune personnalisée</li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Avis illimités</li>
-          <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Réponses IA automatiques</li>
+          <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Réponses IA aux avis</li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>SMS post-visite</li>
           <li><svg class="pf-check" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Analytics avancés</li>
         </ul>
