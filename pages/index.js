@@ -149,6 +149,45 @@ footer{padding:60px 0 32px;border-top:1px solid rgba(15,23,42,.06);background:va
 .modal-success p{font-size:14px;color:var(--textsub);line-height:1.65;margin-bottom:20px}
 .btn-close-modal{padding:11px 24px;background:var(--cream);border:1px solid var(--g200);border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;color:var(--slate)}
 
+
+/* ───────── PRICING ───────── */
+.pricing{padding:120px 0;border-top:1px solid rgba(15,23,42,.06)}
+.pricing-head{text-align:center;margin-bottom:64px;max-width:640px;margin-left:auto;margin-right:auto}
+.pricing-eyebrow{font-size:11px;font-weight:600;color:var(--orange);letter-spacing:.22em;text-transform:uppercase;margin-bottom:20px}
+.pricing-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.2;color:var(--slate);margin-bottom:16px}
+.pricing-title em{font-style:italic;color:var(--orange)}
+.pricing-sub{font-size:16px;color:var(--textsub);line-height:1.65}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto}
+.plan{background:white;border:1px solid rgba(15,23,42,.08);border-radius:var(--rlg);padding:36px 28px;position:relative;transition:all .3s}
+.plan:hover{border-color:rgba(15,23,42,.2);transform:translateY(-2px)}
+.plan.feat{background:var(--slate);border-color:var(--slate);color:white}
+.plan.feat:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(15,23,42,.2)}
+.plan-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:white;border-radius:100px;padding:4px 14px;font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:.03em}
+.plan-name{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;color:var(--textsub);margin-bottom:6px;letter-spacing:.02em}
+.plan.feat .plan-name{color:rgba(255,255,255,.55)}
+.plan-price{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:700;letter-spacing:-.035em;color:var(--slate);margin-bottom:4px;line-height:1}
+.plan.feat .plan-price{color:white}
+.plan-price sup{font-size:20px;vertical-align:super;letter-spacing:0;font-weight:600}
+.plan-price .mo{font-size:14px;font-weight:500;color:var(--textsub);letter-spacing:0}
+.plan.feat .plan-price .mo{color:rgba(255,255,255,.45)}
+.plan-tag{font-size:13px;color:var(--textsub);margin-bottom:24px;line-height:1.5}
+.plan.feat .plan-tag{color:rgba(255,255,255,.6)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;border-top:1px solid rgba(15,23,42,.08);padding-top:20px}
+.plan.feat .plan-features{border-color:rgba(255,255,255,.1)}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--textsub);line-height:1.5}
+.plan.feat .plan-features li{color:rgba(255,255,255,.72)}
+.plan-features li::before{content:'';display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 7l2.5 2.5L10.5 5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.btn-plan{display:flex;align-items:center;justify-content:center;background:var(--slate);color:white;border-radius:100px;padding:12px;font-size:14px;font-weight:600;width:100%;text-decoration:none;border:none;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-plan:hover{background:var(--orange)}
+.plan.feat .btn-plan{background:white;color:var(--slate)}
+.plan.feat .btn-plan:hover{background:var(--orange);color:white}
+.pricing-note{text-align:center;font-size:13px;color:var(--g500);margin-top:28px}
+
+@media(max-width:900px){
+  .pricing{padding:80px 0}
+  .pricing-grid{grid-template-columns:1fr;max-width:420px}
+}
+
 /* ───────── RESPONSIVE ───────── */
 @media(max-width:900px){
   .nav-links{display:none}
@@ -178,6 +217,7 @@ const BODY = `
     <a href="/" class="logo">esmy<span class="logo-dot">.</span></a>
     <div class="nav-links">
       <a href="/about">À propos</a>
+      <a href="#tarifs">Tarifs</a>
       <a href="/demo">Démo API</a>
       <a href="#" onclick="openModal();return false">Contact</a>
     </div>
@@ -279,6 +319,61 @@ const BODY = `
   </div>
 </section>
 
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="container">
+    <div class="pricing-head">
+      <div class="pricing-eyebrow">Tarifs</div>
+      <h2 class="pricing-title">Simple, transparent, <em>sans engagement</em>.</h2>
+      <p class="pricing-sub">Choisissez le plan qui correspond à votre commerce. Annulez quand vous voulez.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>€</sup>33<span class="mo"> /mois</span></div>
+        <div class="plan-tag">1 établissement · Pour démarrer</div>
+        <ul class="plan-features">
+          <li>Réponses IA aux avis</li>
+          <li>QR code imprimable</li>
+          <li>Avis illimités</li>
+          <li>Dashboard complet</li>
+        </ul>
+        <a href="#" onclick="openModal();return false" class="btn-plan">Démarrer</a>
+      </div>
+
+      <div class="plan feat">
+        <div class="plan-badge">Le plus populaire</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>€</sup>69<span class="mo"> /mois</span></div>
+        <div class="plan-tag">Jusqu'à 3 établissements</div>
+        <ul class="plan-features">
+          <li>Tout le plan Starter</li>
+          <li>Roue de fortune personnalisée</li>
+          <li>SMS post-visite</li>
+          <li>Analytics avancés</li>
+        </ul>
+        <a href="#" onclick="openModal();return false" class="btn-plan">Démarrer le Pro</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Agence</div>
+        <div class="plan-price" style="font-size:26px;letter-spacing:-.01em;">Sur demande</div>
+        <div class="plan-tag">Établissements illimités · Tarif personnalisé</div>
+        <ul class="plan-features">
+          <li>Tout le plan Pro</li>
+          <li>Dashboard multi-clients</li>
+          <li>Marque blanche</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <a href="#" onclick="openModal();return false" class="btn-plan">Nous contacter</a>
+      </div>
+    </div>
+    <p class="pricing-note">Sans frais cachés · Annulez à tout moment</p>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
@@ -299,6 +394,7 @@ const BODY = `
     </div>
     <div class="footer-col">
       <h4>Produit</h4>
+      <a href="#tarifs">Tarifs</a>
       <a href="#" onclick="openModal();return false">Planifier une démo</a>
       <a href="/demo">API Google</a>
       <a href="/login">Connexion</a>
