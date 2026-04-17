@@ -233,7 +233,7 @@ const BODY = `
   <div class="container">
     <div class="hero-eyebrow">Pour les commerçants locaux</div>
     <h1 class="hero-title">Votre présence locale.<br><em>Réinventée.</em></h1>
-    <p class="hero-sub">L'intelligence et la gamification au service des commerces qui veulent être trouvés, appréciés, et recommandés — sans y passer leurs soirées.</p>
+    <p class="hero-sub">L'intelligence et la gamification au service des commerces qui veulent mieux gérer leur réputation locale et fidéliser leurs clients — sans y passer leurs soirées.</p>
 
     <div class="hero-actions">
       <a href="#" onclick="openModal();return false" class="btn-primary-big">Planifiez votre démo →</a>
@@ -312,7 +312,7 @@ const BODY = `
       <div class="pillar">
         <div class="pillar-num">03</div>
         <div class="pillar-name">Pulse</div>
-        <div class="pillar-tag">Analyse en temps réel</div>
+        <div class="pillar-tag">Analyse claire et simple</div>
         <div class="pillar-desc">Votre réputation locale, pilotée simplement. Un tableau de bord conçu pour les commerçants.</div>
       </div>
     </div>
