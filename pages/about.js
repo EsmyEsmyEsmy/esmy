@@ -78,7 +78,7 @@ const BODY = `<nav>
   <div class="container">
     <div class="eyebrow">À propos d'Esmy</div>
     <h1>Bâtis en Provence,<br>pour les commerçants.</h1>
-    <p>Esmy est né d'une conviction simple : un bon commerçant mérite d'être trouvé. Nous construisons les outils qui rendent ça possible.</p>
+    <p>Esmy est né d'une conviction simple : un bon commerçant mérite d'être reconnu. Nous construisons les outils qui aident à gérer sa réputation en ligne.</p>
   </div>
 </div>
 
@@ -92,7 +92,7 @@ const BODY = `<nav>
       </div>
       <div style="background:white;border:1px solid var(--g200);border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(17,24,39,.08)">
         <div style="font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px">Notre mission</div>
-        <p style="font-size:18px;font-weight:700;color:var(--slate);line-height:1.5;margin-bottom:20px">"Chaque bon commerçant mérite d'être visible. Nous construisons les outils qui rendent ça possible — simplement, honnêtement."</p>
+        <p style="font-size:18px;font-weight:700;color:var(--slate);line-height:1.5;margin-bottom:20px">"Chaque bon commerçant mérite que sa réputation en ligne reflète son travail. Nous construisons les outils qui l'aident à y veiller — simplement, honnêtement."</p>
         <div style="display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--g200)">
           <div style="width:40px;height:40px;border-radius:50%;background:rgba(249,115,22,.15);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:var(--orange)">S</div>
           <div>
