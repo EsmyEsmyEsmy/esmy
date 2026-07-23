@@ -1,15 +1,43 @@
 // ============================================================================
 // pages/_document.js — En-tête global du site Esmy
 // ============================================================================
-// Ce fichier s'applique AUTOMATIQUEMENT à toutes les pages du site.
-// Il évite d'avoir à répéter les favicons et le logo dans chaque page.
+// S'applique automatiquement à TOUTES les pages (présentes et futures).
 //
 // Contient :
-//  1. Les déclarations de favicon (onglet navigateur, iOS, Android)
-//  2. Le remplacement du logo texte "esmy." par le vrai logo image
+//  1. Les favicons (onglet navigateur, iOS, Android)
+//  2. Le remplacement du logo texte "esmy." par le vrai logo
+//
+// Technique du logo : masque CSS + currentColor.
+// Le logo prend automatiquement la couleur définie par chaque page
+// (foncé sur fond clair, blanc sur fond sombre) — une seule image suffit.
+// Si le navigateur ne supporte pas les masques CSS, le texte "esmy."
+// reste affiché : dégradation gracieuse, jamais de logo invisible.
 // ============================================================================
 
 import { Html, Head, Main, NextScript } from 'next/document'
+
+const LOGO_CSS = `
+@supports ((-webkit-mask-image: url("/wordmark-transparent.png")) or (mask-image: url("/wordmark-transparent.png"))) {
+  .logo {
+    display: inline-block !important;
+    width: 84px;
+    height: 32px;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    vertical-align: middle;
+    background-color: currentColor;
+    -webkit-mask-image: url("/wordmark-transparent.png");
+            mask-image: url("/wordmark-transparent.png");
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
+            mask-position: left center;
+    -webkit-mask-size: contain;
+            mask-size: contain;
+  }
+  .logo-dot { display: none !important; }
+}
+`
 
 export default function Document() {
   return (
@@ -22,23 +50,8 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#0F172A" />
 
-        {/* ─── Logo : remplace le texte "esmy." par le vrai logo ─── */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          a.logo, .logo {
-            display: inline-block !important;
-            width: 88px !important;
-            height: 34px !important;
-            background-image: url('/wordmark-transparent.png') !important;
-            background-repeat: no-repeat !important;
-            background-position: left center !important;
-            background-size: contain !important;
-            text-indent: -9999px !important;
-            overflow: hidden !important;
-            white-space: nowrap !important;
-            vertical-align: middle;
-          }
-          .logo-dot { display: none !important; }
-        ` }} />
+        {/* ─── Logo global ─── */}
+        <style dangerouslySetInnerHTML={{ __html: LOGO_CSS }} />
       </Head>
       <body>
         <Main />
