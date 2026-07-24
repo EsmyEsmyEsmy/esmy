@@ -12,16 +12,19 @@
 // (foncé sur fond clair, blanc sur fond sombre) — une seule image suffit.
 // Si le navigateur ne supporte pas les masques CSS, le texte "esmy."
 // reste affiché : dégradation gracieuse, jamais de logo invisible.
+//
+// Variantes couvertes :
+//   .logo        → nav et footer (toutes les pages)
+//   .modal-logo  → modale "Planifions votre démo" (page d'accueil)
 // ============================================================================
 
 import { Html, Head, Main, NextScript } from 'next/document'
 
 const LOGO_CSS = `
 @supports ((-webkit-mask-image: url("/wordmark-transparent.png")) or (mask-image: url("/wordmark-transparent.png"))) {
-  .logo {
+  .logo,
+  .modal-logo {
     display: inline-block !important;
-    width: 84px;
-    height: 32px;
     font-size: 0 !important;
     line-height: 0 !important;
     vertical-align: middle;
@@ -35,7 +38,15 @@ const LOGO_CSS = `
     -webkit-mask-size: contain;
             mask-size: contain;
   }
-  .logo-dot { display: none !important; }
+
+  /* Nav et footer */
+  .logo { width: 84px; height: 32px; }
+
+  /* Modale — logo légèrement plus petit */
+  .modal-logo { width: 70px; height: 26px; margin-bottom: 16px; }
+
+  .logo-dot,
+  .modal-logo-dot { display: none !important; }
 }
 `
 
