@@ -9,7 +9,7 @@
 // Le jour où le dashboard bascule sur app.esmy.ai : changer APP_URL ici.
 // ============================================================================
 
-const APP_URL = 'https://version-2-jet.vercel.app'
+const APP_URL = 'https://app.esmy.ai'
 
 export async function getServerSideProps() {
   return {
