@@ -10,7 +10,7 @@
 // et toutes les cartes déjà imprimées suivent automatiquement.
 // ============================================================================
 
-const APP_URL = 'https://version-2-jet.vercel.app'
+const APP_URL = 'https://app.esmy.ai'
 
 export async function getServerSideProps() {
   return {
